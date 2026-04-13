@@ -206,8 +206,8 @@ const Index = () => {
           <div className="flex flex-1 flex-col justify-center">
           <div className="max-w-2xl space-y-3">
 
-            <h1 className="text-[24px] font-bold leading-[1.08] tracking-[-0.03em] sm:text-4xl">
-              Chuva, vibração, roubo — quantos celulares você já perdeu?
+            <h1 className="text-[26px] font-bold leading-[1.08] tracking-[-0.03em] sm:text-4xl">
+              Seu celular <span className="text-primary">não sobrevive</span> no guidão. Esse painel sim.
             </h1>
             <p className="text-[14px] leading-relaxed text-surface-foreground/70">
               O MotoPlay Pro resolve de vez: tela própria no guidão com GPS, apps de entrega, música e chamadas. Tocou uma corrida? Aceita direto na tela.
