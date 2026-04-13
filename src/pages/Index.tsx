@@ -238,7 +238,7 @@ const Index = () => {
           {/* Hero VSL mobile */}
           <div className="relative mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10 lg:hidden">
             <video
-              className="w-full aspect-[9/16] max-h-[280px] object-cover bg-black"
+              className="w-full aspect-[9/16] max-h-[400px] object-cover bg-black"
               controls
               playsInline
               preload="metadata"
