@@ -201,7 +201,7 @@ const Index = () => {
       {/* ═══════ HERO ═══════ */}
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground">
         <div className="absolute inset-0 bg-hero" />
-        <div className="container relative flex flex-col px-4 py-8">
+        <div className="container relative flex min-h-[100svh] flex-col px-4 py-8 pt-16">
 
           <div className="flex flex-1 flex-col justify-center">
           <div className="max-w-2xl space-y-3">
