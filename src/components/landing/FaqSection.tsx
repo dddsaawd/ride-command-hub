@@ -26,18 +26,22 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <SectionWrapper alt>
-    <h2 className="font-display text-2xl md:text-4xl font-bold text-center text-foreground mb-12">
-      Ainda tem dúvidas?
-    </h2>
+  <SectionWrapper>
+    <div className="text-center mb-16">
+      <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Dúvidas</p>
+      <h2 className="font-serif text-3xl md:text-5xl font-medium text-foreground leading-tight">
+        Perguntas frequentes
+      </h2>
+    </div>
+
     <div className="max-w-2xl mx-auto">
-      <Accordion type="single" collapsible className="space-y-3">
+      <Accordion type="single" collapsible>
         {faqs.map(({ q, a }, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="bg-background border border-border rounded-xl px-6 overflow-hidden">
-            <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5">
+          <AccordionItem key={i} value={`faq-${i}`} className="border-t border-border last:border-b">
+            <AccordionTrigger className="text-left text-foreground hover:no-underline py-6 text-sm tracking-wide font-medium">
               {q}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground pb-5">
+            <AccordionContent className="text-muted-foreground pb-6 text-sm leading-relaxed tracking-wide">
               {a}
             </AccordionContent>
           </AccordionItem>
