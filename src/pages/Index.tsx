@@ -39,6 +39,7 @@ import {
   CreditCard,
 } from "lucide-react";
 
+import logoMotoplay from "@/assets/logo-motoplay.png";
 import heroImg from "@/assets/motoplay-hero.jpg";
 import entregadorImg from "@/assets/motoplay-entregador.jpg";
 import logoIfood from "@/assets/logo-ifood.png";
@@ -128,6 +129,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-hero" />
         <div className="container relative flex min-h-[100svh] flex-col justify-center px-4 py-8">
           <div className="max-w-2xl space-y-3">
+            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-8 w-auto mb-2" />
             <div className="inline-flex items-center gap-2 rounded-full border border-surface-foreground/10 bg-surface-foreground/5 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-primary">
               🔥 Estoque limitado no Brasil
             </div>
