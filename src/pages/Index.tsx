@@ -136,7 +136,7 @@ const Index = () => {
       <div
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center py-3 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
       >
-        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
+        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto brightness-0 invert" />
       </div>
 
       {/* ═══════ HERO ═══════ */}
