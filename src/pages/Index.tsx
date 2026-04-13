@@ -127,9 +127,15 @@ const Index = () => {
       {/* ═══════ HERO ═══════ */}
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground">
         <div className="absolute inset-0 bg-hero" />
-        <div className="container relative flex min-h-[100svh] flex-col justify-center px-4 py-8">
+        <div className="container relative flex min-h-[100svh] flex-col px-4 py-8">
+          {/* Logo top bar */}
+          <div className="flex items-center justify-between pt-2 pb-6">
+            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto brightness-0 invert" />
+            <a href={CTA_LINK} className="rounded-full bg-primary px-4 py-1.5 text-[11px] font-bold text-primary-foreground">Comprar</a>
+          </div>
+
+          <div className="flex flex-1 flex-col justify-center">
           <div className="max-w-2xl space-y-3">
-            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-8 w-auto mb-2" />
             <div className="inline-flex items-center gap-2 rounded-full border border-surface-foreground/10 bg-surface-foreground/5 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-primary">
               🔥 Estoque limitado no Brasil
             </div>
