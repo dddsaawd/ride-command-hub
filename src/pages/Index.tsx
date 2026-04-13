@@ -205,10 +205,6 @@ const Index = () => {
 
           <div className="flex flex-1 flex-col justify-center">
           <div className="max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-1.5 rounded-md bg-primary px-2.5 py-1">
-              <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground/60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-primary-foreground" /></span>
-              <span className="text-[11px] font-bold uppercase tracking-wide text-primary-foreground">Estoque limitado</span>
-            </div>
 
             <h1 className="text-[24px] font-bold leading-[1.08] tracking-[-0.03em] sm:text-4xl">
               Chuva, vibração, roubo — quantos celulares você já perdeu?
