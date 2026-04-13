@@ -89,7 +89,7 @@ const testimonials = [
   { name: "Lucas F.", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim." },
 ];
 
-const brands = ["Honda", "Yamaha", "BMW Motorrad", "Kawasaki", "Suzuki", "Triumph", "Ducati", "Royal Enfield"];
+
 
 /* Countdown timer hook */
 const useCountdown = (hours: number) => {
