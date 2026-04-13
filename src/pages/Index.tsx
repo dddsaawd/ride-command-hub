@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import MotoSelector from "@/components/MotoSelector";
 import {
   ArrowRight,
@@ -113,7 +113,8 @@ const useCountdown = (hours: number) => {
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const countdown = useCountdown(2);
-  const [showStickyLogo, setShowStickyLogo] = useState(false);
+  const [showStickyLogo, setShowStickyLogo] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     document.title = "MotoPlay Pro | Painel Inteligente para Moto";
@@ -129,14 +130,71 @@ const Index = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const menuLinks = [
+    { label: "Início", href: "#" },
+    { label: "Benefícios", href: "#beneficios" },
+    { label: "Para Entregadores", href: "#entregadores" },
+    { label: "Compatibilidade", href: "#compatibilidade" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Oferta", href: "#oferta" },
+  ];
+
   return (
     <main className="overflow-x-hidden bg-background text-foreground pb-[72px] md:pb-0">
 
-      {/* ═══════ FIXED LOGO HEADER (visible at top, hides on scroll) ═══════ */}
+      {/* ═══════ FIXED HEADER ═══════ */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-white py-3 shadow-sm transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-4 py-3 shadow-sm transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
       >
-        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
+        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-9 w-auto" />
+        <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-[5px] p-1" aria-label="Abrir menu">
+          <span className="block h-[2px] w-6 bg-foreground rounded-full" />
+          <span className="block h-[2px] w-6 bg-foreground rounded-full" />
+          <span className="block h-[2px] w-4 bg-foreground rounded-full" />
+        </button>
+      </div>
+
+      {/* ═══════ MOBILE SIDE MENU ═══════ */}
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 z-[60] bg-black/50 transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        onClick={() => setMenuOpen(false)}
+      />
+      {/* Drawer */}
+      <div
+        className={`fixed top-0 right-0 z-[70] h-full w-[280px] bg-white shadow-2xl transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+          <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
+          <button onClick={() => setMenuOpen(false)} className="p-1" aria-label="Fechar menu">
+            <X className="h-6 w-6 text-foreground" />
+          </button>
+        </div>
+        <nav className="flex flex-col px-5 py-6 gap-1">
+          {menuLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="rounded-xl px-4 py-3 text-[14px] font-semibold text-foreground hover:bg-secondary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href={CTA_LINK}
+            onClick={() => setMenuOpen(false)}
+            className="mt-4 flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-[14px] font-bold text-primary-foreground shadow-cta"
+          >
+            GARANTIR O MEU <ArrowRight className="h-4 w-4" />
+          </a>
+        </nav>
       </div>
 
       {/* ═══════ HERO ═══════ */}
