@@ -235,10 +235,16 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* Hero image mobile */}
+          {/* Hero VSL mobile */}
           <div className="relative mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10 lg:hidden">
-            <img src={heroImg} alt="MotoPlay Pro no guidão" className="h-[200px] w-full object-cover" loading="eager" />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent" />
+            <video
+              className="w-full aspect-[9/16] max-h-[280px] object-cover bg-black"
+              controls
+              playsInline
+              preload="metadata"
+            >
+              <source src="/vsl-motoplay.mp4" type="video/mp4" />
+            </video>
           </div>
 
           <ChevronDown className="mx-auto mt-4 h-5 w-5 animate-bounce text-surface-foreground/30 lg:hidden" />
@@ -271,23 +277,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ VSL VIDEO ═══════ */}
-      <section className="py-8 bg-secondary/40">
-        <div className="container px-4">
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary text-center">Veja na prática</p>
-          <h2 className="mt-1 text-[20px] font-bold leading-tight text-center">Assista e entenda por que motociclistas estão trocando o suporte pelo MotoPlay Pro</h2>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-border shadow-lg">
-            <video
-              className="w-full aspect-[9/16] max-h-[70vh] object-cover bg-black"
-              controls
-              playsInline
-              preload="metadata"
-            >
-              <source src="/vsl-motoplay.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </section>
+
 
       <section className="py-10">
         <div className="container px-4">
