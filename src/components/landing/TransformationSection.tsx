@@ -1,4 +1,5 @@
 import SectionWrapper from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
 const before = [
@@ -17,44 +18,55 @@ const after = [
 
 const TransformationSection = () => (
   <SectionWrapper>
-    <h2 className="font-display text-2xl md:text-4xl font-bold text-center text-foreground mb-12">
-      Agora imagina isso:
-    </h2>
-
-    <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-      {/* Before */}
-      <div className="bg-surface rounded-2xl p-8 border border-border">
-        <h3 className="font-display text-xl font-bold text-destructive mb-6 text-center">ANTES</h3>
-        <ul className="space-y-4">
-          {before.map((item) => (
-            <li key={item} className="flex items-center gap-3">
-              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-destructive/10 flex items-center justify-center">
-                <X className="w-4 h-4 text-destructive" />
-              </span>
-              <span className="text-muted-foreground font-medium">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* After */}
-      <div className="bg-primary/5 rounded-2xl p-8 border-2 border-primary/20">
-        <h3 className="font-display text-xl font-bold text-primary mb-6 text-center">DEPOIS</h3>
-        <ul className="space-y-4">
-          {after.map((item) => (
-            <li key={item} className="flex items-center gap-3">
-              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
-                <Check className="w-4 h-4 text-primary" />
-              </span>
-              <span className="text-foreground font-semibold">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="text-center mb-16">
+      <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Transformação</p>
+      <h2 className="font-serif text-3xl md:text-5xl font-medium text-foreground leading-tight">
+        Agora imagina isso:
+      </h2>
     </div>
 
-    <p className="text-center text-xl md:text-2xl font-bold text-foreground mt-10">
-      👉 Isso muda completamente sua rotina
+    <div className="grid md:grid-cols-2 gap-0 max-w-3xl mx-auto border border-border">
+      {/* Before */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="p-10 md:p-12 bg-surface md:border-r border-b md:border-b-0 border-border"
+      >
+        <h3 className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-8">Antes</h3>
+        <ul className="space-y-5">
+          {before.map((item) => (
+            <li key={item} className="flex items-center gap-4">
+              <X className="w-4 h-4 text-destructive flex-shrink-0" strokeWidth={2} />
+              <span className="text-muted-foreground">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+
+      {/* After */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="p-10 md:p-12"
+      >
+        <h3 className="text-xs tracking-[0.3em] uppercase text-cta mb-8">Depois</h3>
+        <ul className="space-y-5">
+          {after.map((item) => (
+            <li key={item} className="flex items-center gap-4">
+              <Check className="w-4 h-4 text-cta flex-shrink-0" strokeWidth={2.5} />
+              <span className="text-foreground font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+    </div>
+
+    <p className="text-center font-serif text-2xl md:text-3xl italic text-foreground mt-16">
+      Isso muda completamente sua rotina.
     </p>
   </SectionWrapper>
 );

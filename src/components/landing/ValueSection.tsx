@@ -1,31 +1,57 @@
 import SectionWrapper from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
 import { Smartphone, Monitor, Zap } from "lucide-react";
 
 const ValueSection = () => (
-  <SectionWrapper>
-    <h2 className="font-display text-2xl md:text-4xl font-bold text-center text-foreground mb-12">
-      Quanto custa hoje?
-    </h2>
-    <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-      <div className="text-center bg-surface rounded-2xl p-8 border border-border">
-        <Smartphone className="w-10 h-10 text-muted-foreground mx-auto mb-4" />
-        <p className="text-muted-foreground font-medium mb-2">Um celular novo</p>
-        <p className="text-2xl font-bold text-foreground">R$2.000+</p>
-      </div>
-      <div className="text-center bg-surface rounded-2xl p-8 border border-border">
-        <Monitor className="w-10 h-10 text-muted-foreground mx-auto mb-4" />
-        <p className="text-muted-foreground font-medium mb-2">Painel original</p>
-        <p className="text-2xl font-bold text-foreground">R$3.000+</p>
-      </div>
-      <div className="text-center bg-primary/5 rounded-2xl p-8 border-2 border-primary/30">
-        <Zap className="w-10 h-10 text-primary mx-auto mb-4" />
-        <p className="text-primary font-bold mb-2">AutoBike Painel</p>
-        <p className="text-3xl font-bold text-primary">R$297</p>
-        <p className="text-sm text-muted-foreground mt-1">Os dois em um</p>
-      </div>
+  <SectionWrapper alt>
+    <div className="text-center mb-16">
+      <p className="text-xs tracking-[0.3em] uppercase text-background/50 mb-6">Comparativo</p>
+      <h2 className="font-serif text-3xl md:text-5xl font-medium text-background leading-tight">
+        Quanto custa hoje?
+      </h2>
     </div>
-    <p className="text-center text-lg text-muted-foreground mt-8">
-      Agora você tem os dois por uma <span className="font-bold text-foreground">fração disso.</span>
+
+    <div className="grid md:grid-cols-3 gap-0 max-w-4xl mx-auto border border-background/10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center p-10 border-b md:border-b-0 md:border-r border-background/10"
+      >
+        <Smartphone className="w-8 h-8 text-background/40 mx-auto mb-6" strokeWidth={1.5} />
+        <p className="text-background/50 text-xs tracking-[0.2em] uppercase mb-3">Um celular novo</p>
+        <p className="text-3xl font-serif text-background">R$2.000+</p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-center p-10 border-b md:border-b-0 md:border-r border-background/10"
+      >
+        <Monitor className="w-8 h-8 text-background/40 mx-auto mb-6" strokeWidth={1.5} />
+        <p className="text-background/50 text-xs tracking-[0.2em] uppercase mb-3">Painel original</p>
+        <p className="text-3xl font-serif text-background">R$3.000+</p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-center p-10 bg-cta/10"
+      >
+        <Zap className="w-8 h-8 text-cta mx-auto mb-6" strokeWidth={1.5} />
+        <p className="text-cta text-xs tracking-[0.2em] uppercase font-medium mb-3">AutoBike Painel</p>
+        <p className="text-4xl font-serif text-cta">R$297</p>
+        <p className="text-background/50 text-xs tracking-wide mt-2">Os dois em um</p>
+      </motion.div>
+    </div>
+
+    <p className="text-center text-background/60 tracking-wide mt-12">
+      Agora você tem os dois por uma <span className="text-background font-medium">fração disso.</span>
     </p>
   </SectionWrapper>
 );

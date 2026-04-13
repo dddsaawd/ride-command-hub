@@ -1,4 +1,5 @@
 import SectionWrapper from "@/components/SectionWrapper";
+import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
 const reviews = [
@@ -10,27 +11,37 @@ const reviews = [
 
 const SocialProof = () => (
   <SectionWrapper>
-    <h2 className="font-display text-2xl md:text-4xl font-bold text-center text-foreground mb-4">
-      Quem usa, recomenda ⭐
-    </h2>
-    <p className="text-center text-muted-foreground mb-12">
-      Mais de <span className="font-bold text-foreground">2.300 motoboys</span> já transformaram sua rotina.
-    </p>
+    <div className="text-center mb-16">
+      <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Depoimentos</p>
+      <h2 className="font-serif text-3xl md:text-5xl font-medium text-foreground leading-tight mb-4">
+        Quem usa, recomenda
+      </h2>
+      <p className="text-muted-foreground tracking-wide">
+        Mais de <span className="font-medium text-foreground">2.300 motoboys</span> já transformaram sua rotina.
+      </p>
+    </div>
 
-    <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-      {reviews.map(({ name, city, text, rating }) => (
-        <div key={name} className="bg-surface rounded-2xl p-6 border border-border">
-          <div className="flex items-center gap-1 mb-3">
-            {Array.from({ length: rating }).map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-highlight text-highlight" />
+    <div className="grid sm:grid-cols-2 gap-0 border border-border max-w-4xl mx-auto">
+      {reviews.map(({ name, city, text, rating }, i) => (
+        <motion.div
+          key={name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          className="p-8 border-b border-r border-border last:border-b-0 [&:nth-last-child(2)]:border-b-0"
+        >
+          <div className="flex items-center gap-0.5 mb-4">
+            {Array.from({ length: rating }).map((_, j) => (
+              <Star key={j} className="w-3.5 h-3.5 fill-highlight text-highlight" />
             ))}
           </div>
-          <p className="text-foreground mb-4 italic">"{text}"</p>
+          <p className="text-foreground mb-6 text-sm leading-relaxed italic">"{text}"</p>
           <div>
-            <p className="font-semibold text-foreground text-sm">{name}</p>
-            <p className="text-muted-foreground text-xs">{city}</p>
+            <p className="font-medium text-foreground text-sm">{name}</p>
+            <p className="text-muted-foreground text-xs tracking-wide">{city}</p>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   </SectionWrapper>

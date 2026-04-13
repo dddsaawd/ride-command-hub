@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 interface SectionWrapperProps {
   children: React.ReactNode;
@@ -9,31 +9,21 @@ interface SectionWrapperProps {
 }
 
 const SectionWrapper = ({ children, className, alt = false, id }: SectionWrapperProps) => {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
+    <motion.section
       id={id}
-      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
       className={cn(
-        "py-16 md:py-24 px-4",
-        alt ? "bg-surface" : "bg-background",
-        visible ? "animate-fade-up" : "opacity-0",
+        "py-20 md:py-32 px-6 lg:px-8",
+        alt ? "bg-foreground text-background" : "bg-background text-foreground",
         className
       )}
     >
-      <div className="container mx-auto max-w-5xl">{children}</div>
-    </section>
+      <div className="mx-auto max-w-6xl">{children}</div>
+    </motion.section>
   );
 };
 
