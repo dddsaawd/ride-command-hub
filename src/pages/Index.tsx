@@ -144,7 +144,7 @@ const Index = () => {
         <div className="container relative flex min-h-[100svh] flex-col px-4 py-8">
           {/* Logo top bar */}
           <div className="flex items-center justify-between pt-2 pb-6">
-            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto brightness-0 invert" />
+            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
             <a href={CTA_LINK} className="rounded-full bg-primary px-4 py-1.5 text-[11px] font-bold text-primary-foreground">Comprar</a>
           </div>
 
