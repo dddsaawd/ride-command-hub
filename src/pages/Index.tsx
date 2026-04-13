@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import MotoSelector from "@/components/MotoSelector";
 import {
   ArrowRight,
   Bluetooth,
@@ -88,7 +89,7 @@ const testimonials = [
   { name: "Lucas F.", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim." },
 ];
 
-const brands = ["Honda", "Yamaha", "BMW Motorrad", "Kawasaki", "Suzuki", "Triumph", "Ducati", "Royal Enfield"];
+
 
 /* Countdown timer hook */
 const useCountdown = (hours: number) => {
@@ -373,36 +374,7 @@ const Index = () => {
       </section>
 
       {/* ═══════ COMPATIBILIDADE ═══════ */}
-      <section className="py-10">
-        <div className="container px-4">
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Compatibilidade</p>
-          <h2 className="mt-1 text-[20px] font-bold leading-tight">Funciona na sua moto?</h2>
-
-          <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-            <div className="rounded-2xl bg-primary/10 p-3">
-              <p className="text-[22px] font-bold text-primary">25</p>
-              <p className="text-[10px] font-bold uppercase text-muted-foreground">Marcas</p>
-            </div>
-            <div className="rounded-2xl bg-primary/10 p-3">
-              <p className="text-[22px] font-bold text-primary">383+</p>
-              <p className="text-[10px] font-bold uppercase text-muted-foreground">Modelos</p>
-            </div>
-            <div className="rounded-2xl bg-primary/10 p-3">
-              <p className="text-[22px] font-bold text-primary">99%</p>
-              <p className="text-[10px] font-bold uppercase text-muted-foreground">Cobertura</p>
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <p className="text-[11px] font-bold uppercase text-muted-foreground mb-2">Marcas populares</p>
-            <div className="flex flex-wrap gap-2">
-              {brands.map((b) => (
-                <span key={b} className="rounded-full bg-secondary px-3 py-1 text-[12px] font-semibold">{b}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <MotoSelector />
 
       {/* ═══════ KIT INCLUSO ═══════ */}
       <section className="py-10 bg-secondary/40">
