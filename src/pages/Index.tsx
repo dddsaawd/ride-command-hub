@@ -113,6 +113,7 @@ const useCountdown = (hours: number) => {
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const countdown = useCountdown(2);
+  const [showStickyLogo, setShowStickyLogo] = useState(false);
 
   useEffect(() => {
     document.title = "MotoPlay Pro | Painel Inteligente para Moto";
@@ -121,8 +122,21 @@ const Index = () => {
     meta.content = "Chuva, vibração, roubo — quantos celulares você já perdeu? MotoPlay Pro: tela própria no guidão com GPS, apps de entrega, música e chamadas.";
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => setShowStickyLogo(window.scrollY > 120);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <main className="overflow-x-hidden bg-background text-foreground pb-[72px] md:pb-0">
+
+      {/* ═══════ STICKY LOGO HEADER ═══════ */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-md shadow-sm py-2.5 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
+      >
+        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-6 w-auto" />
+      </div>
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground">
@@ -130,7 +144,7 @@ const Index = () => {
         <div className="container relative flex min-h-[100svh] flex-col px-4 py-8">
           {/* Logo top bar */}
           <div className="flex items-center justify-between pt-2 pb-6">
-            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto brightness-0 invert" />
+            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
             <a href={CTA_LINK} className="rounded-full bg-primary px-4 py-1.5 text-[11px] font-bold text-primary-foreground">Comprar</a>
           </div>
 
