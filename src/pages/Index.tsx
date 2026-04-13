@@ -173,6 +173,7 @@ const Index = () => {
           </div>
 
           <ChevronDown className="mx-auto mt-4 h-5 w-5 animate-bounce text-surface-foreground/30 lg:hidden" />
+          </div>
         </div>
       </section>
 
