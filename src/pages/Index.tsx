@@ -49,6 +49,7 @@ import logoSpotify from "@/assets/logo-spotify.png";
 import logoWhatsapp from "@/assets/logo-whatsapp.png";
 import logoYoutube from "@/assets/logo-youtube.png";
 import logoZe from "@/assets/logo-ze.png";
+import logoKeeta from "@/assets/logo-keeta.png";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -60,6 +61,7 @@ const appLogos = [
   { src: logoIfood, alt: "iFood" },
   { src: logoUber, alt: "Uber" },
   { src: logo99, alt: "99" },
+  { src: logoKeeta, alt: "Keeta" },
   { src: logoWaze, alt: "Waze" },
   { src: logoGmaps, alt: "Google Maps" },
   { src: logoSpotify, alt: "Spotify" },
