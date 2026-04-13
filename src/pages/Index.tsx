@@ -166,11 +166,11 @@ const Index = () => {
       </section>
 
       {/* ═══════ APP LOGOS MARQUEE ═══════ */}
-      <section className="bg-surface py-5 border-t border-surface-foreground/5">
+      <section className="bg-surface py-5 border-t border-surface-foreground/5 overflow-hidden">
         <p className="text-center text-[10px] font-bold uppercase tracking-[0.22em] text-surface-foreground/40 mb-3">Integração total com seus apps</p>
-        <div className="flex gap-4 overflow-x-auto px-4 pb-2 scrollbar-hide justify-start sm:justify-center">
-          {appLogos.map((l) => (
-            <img key={l.alt} src={l.src} alt={l.alt} className="h-10 w-10 shrink-0 rounded-xl object-cover" loading="lazy" />
+        <div className="marquee-track flex w-max gap-6">
+          {[...appLogos, ...appLogos, ...appLogos].map((l, i) => (
+            <img key={`${l.alt}-${i}`} src={l.src} alt={l.alt} className="h-10 w-10 shrink-0 rounded-xl object-cover" loading="lazy" />
           ))}
         </div>
       </section>

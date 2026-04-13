@@ -148,3 +148,12 @@ All colors MUST be HSL.
     text-wrap: balance;
   }
 }
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 12s linear infinite;
+}
