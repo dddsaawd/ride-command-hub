@@ -197,22 +197,6 @@ const Index = () => {
         </nav>
       </div>
 
-      {/* ═══════ VSL VIDEO ═══════ */}
-      <section className="bg-surface pt-16 pb-0">
-        <div className="container px-4">
-          <div className="overflow-hidden rounded-2xl border border-surface-foreground/10 shadow-lg">
-            <video
-              className="w-full aspect-[9/16] max-h-[75vh] object-cover"
-              controls
-              playsInline
-              preload="metadata"
-              poster=""
-            >
-              <source src="/vsl-motoplay.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground">
