@@ -123,7 +123,8 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setShowStickyLogo(window.scrollY > 120);
+    const onScroll = () => setShowStickyLogo(window.scrollY < 80);
+    setShowStickyLogo(true);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -131,22 +132,17 @@ const Index = () => {
   return (
     <main className="overflow-x-hidden bg-background text-foreground pb-[72px] md:pb-0">
 
-      {/* ═══════ STICKY LOGO HEADER ═══════ */}
+      {/* ═══════ FIXED LOGO HEADER (visible at top, hides on scroll) ═══════ */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-md shadow-sm py-2.5 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center py-3 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
       >
-        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-6 w-auto" />
+        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
       </div>
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative isolate overflow-hidden bg-surface text-surface-foreground">
         <div className="absolute inset-0 bg-hero" />
-        <div className="container relative flex min-h-[100svh] flex-col px-4 py-8">
-          {/* Logo top bar */}
-          <div className="flex items-center justify-between pt-2 pb-6">
-            <img src={logoMotoplay} alt="MotoPlay Pro" className="h-7 w-auto" />
-            <a href={CTA_LINK} className="rounded-full bg-primary px-4 py-1.5 text-[11px] font-bold text-primary-foreground">Comprar</a>
-          </div>
+        <div className="container relative flex min-h-[100svh] flex-col px-4 py-8 pt-16">
 
           <div className="flex flex-1 flex-col justify-center">
           <div className="max-w-2xl space-y-3">
