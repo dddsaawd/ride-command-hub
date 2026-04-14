@@ -1,5 +1,10 @@
-import { useState, useMemo } from "react";
-import { Check, ChevronDown, Search, ShieldCheck, Bike } from "lucide-react";
+import { useState, useMemo, useRef, useEffect } from "react";
+import { Check, ChevronDown, Search, ShieldCheck, Bike, ArrowRight, Lock, CreditCard, Truck, Shield, Package, MessageSquare } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+import produtoSuporteMaleavel from "@/assets/produto-suporte-maleavel.webp";
+import produtoKitCompleto from "@/assets/produto-kit-completo.webp";
+import produtoCarplayAndroid from "@/assets/produto-carplay-android.webp";
 
 /* ── Complete motorcycle database ── */
 const MOTO_DATABASE: Record<string, string[]> = {
@@ -185,12 +190,31 @@ const MOTO_DATABASE: Record<string, string[]> = {
 
 const BRAND_LIST = Object.keys(MOTO_DATABASE).sort();
 
+/* Countdown timer hook */
+const useCountdown = (hours: number) => {
+  const end = useRef(Date.now() + hours * 3600_000);
+  const [left, setLeft] = useState(hours * 3600);
+  useEffect(() => {
+    const t = setInterval(() => {
+      const diff = Math.max(0, Math.floor((end.current - Date.now()) / 1000));
+      setLeft(diff);
+    }, 1000);
+    return () => clearInterval(t);
+  }, []);
+  const h = String(Math.floor(left / 3600)).padStart(2, "0");
+  const m = String(Math.floor((left % 3600) / 60)).padStart(2, "0");
+  const s = String(left % 60).padStart(2, "0");
+  return `${h}:${m}:${s}`;
+};
+
 export default function MotoSelector() {
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
   const [search, setSearch] = useState("");
   const [showBrands, setShowBrands] = useState(false);
+  const offerRef = useRef<HTMLDivElement>(null);
+  const countdown = useCountdown(2);
 
   const totalModels = useMemo(() => Object.values(MOTO_DATABASE).reduce((s, m) => s + m.length, 0), []);
 
@@ -215,6 +239,10 @@ export default function MotoSelector() {
   const handleModelSelect = (model: string) => {
     setSelectedModel(model);
     setConfirmed(true);
+    // Scroll to offer after a small delay
+    setTimeout(() => {
+      offerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 300);
   };
 
   const handleReset = () => {
@@ -225,137 +253,251 @@ export default function MotoSelector() {
     setShowBrands(false);
   };
 
+  const whatsappLink = `https://wa.me/5500000000000?text=${encodeURIComponent(
+    `Quero o MotoPlay Pro com 40% OFF!\nMinha moto: ${selectedBrand || ""} ${selectedModel || ""}`
+  )}`;
+
   return (
-    <section className="py-10" id="compatibilidade">
-      <div className="container px-4">
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Compatibilidade Universal</p>
-        <h2 className="mt-1 text-[20px] font-bold leading-tight">Funciona na sua moto?</h2>
-        <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
-          Verifique agora — compatível com <strong className="text-foreground">{BRAND_LIST.length} marcas</strong> e <strong className="text-foreground">{totalModels}+ modelos</strong>.
-        </p>
-
-        {/* Stats */}
-        <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-          <div className="rounded-2xl bg-primary/10 p-3">
-            <p className="text-[22px] font-bold text-primary">{BRAND_LIST.length}</p>
-            <p className="text-[10px] font-bold uppercase text-muted-foreground">Marcas</p>
-          </div>
-          <div className="rounded-2xl bg-primary/10 p-3">
-            <p className="text-[22px] font-bold text-primary">{totalModels}+</p>
-            <p className="text-[10px] font-bold uppercase text-muted-foreground">Modelos</p>
-          </div>
-          <div className="rounded-2xl bg-primary/10 p-3">
-            <p className="text-[22px] font-bold text-primary">99%</p>
-            <p className="text-[10px] font-bold uppercase text-muted-foreground">Cobertura</p>
-          </div>
-        </div>
-
-        {/* Selector card */}
-        <div className="mt-5 rounded-2xl border border-border bg-card p-4 shadow-sm">
-          <p className="text-[12px] font-bold uppercase tracking-[0.15em] text-primary flex items-center gap-2 mb-3">
-            <Bike className="h-4 w-4" /> Selecione sua moto
+    <>
+      <section className="py-10" id="compatibilidade">
+        <div className="container px-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Compatibilidade Universal</p>
+          <h2 className="mt-1 text-[20px] font-bold leading-tight">Funciona na sua moto?</h2>
+          <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
+            Verifique agora — compatível com <strong className="text-foreground">{BRAND_LIST.length} marcas</strong> e <strong className="text-foreground">{totalModels}+ modelos</strong>.
           </p>
 
-          {/* Confirmed state */}
-          {confirmed && selectedBrand && selectedModel ? (
-            <div className="animate-scale-in">
-              <div className="flex flex-col items-center gap-3 py-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground animate-scale-in">
-                  <ShieldCheck className="h-7 w-7" />
-                </div>
-                <div className="text-center">
-                  <p className="text-[16px] font-bold text-accent">✅ Compatível!</p>
-                  <p className="text-[13px] font-semibold mt-1">{selectedBrand} {selectedModel}</p>
-                  <p className="text-[11px] text-muted-foreground mt-1">
-                    O MotoPlay Pro é 100% compatível com sua moto.
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={handleReset}
-                className="w-full mt-2 rounded-xl border border-border bg-secondary/50 py-2.5 text-[12px] font-bold text-muted-foreground active:scale-[0.98] transition-transform"
-              >
-                Verificar outra moto
-              </button>
+          {/* Stats */}
+          <div className="mt-4 grid grid-cols-3 gap-3 text-center">
+            <div className="rounded-2xl bg-primary/10 p-3">
+              <p className="text-[22px] font-bold text-primary">{BRAND_LIST.length}</p>
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">Marcas</p>
             </div>
-          ) : (
-            <>
-              {/* Search */}
-              <div className="relative mb-3">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Buscar marca ou modelo..."
-                  value={search}
-                  onChange={(e) => { setSearch(e.target.value); setShowBrands(true); setSelectedBrand(null); setSelectedModel(null); }}
-                  onFocus={() => setShowBrands(true)}
-                  className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-4 text-[13px] font-medium placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                />
+            <div className="rounded-2xl bg-primary/10 p-3">
+              <p className="text-[22px] font-bold text-primary">{totalModels}+</p>
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">Modelos</p>
+            </div>
+            <div className="rounded-2xl bg-primary/10 p-3">
+              <p className="text-[22px] font-bold text-primary">99%</p>
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">Cobertura</p>
+            </div>
+          </div>
+
+          {/* Selector card */}
+          <div className="mt-5 rounded-2xl border border-border bg-card p-4 shadow-sm">
+            <p className="text-[12px] font-bold uppercase tracking-[0.15em] text-primary flex items-center gap-2 mb-3">
+              <Bike className="h-4 w-4" /> Selecione sua moto
+            </p>
+
+            {/* Confirmed state */}
+            {confirmed && selectedBrand && selectedModel ? (
+              <div className="animate-scale-in">
+                <div className="flex flex-col items-center gap-3 py-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground animate-scale-in">
+                    <ShieldCheck className="h-7 w-7" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[16px] font-bold text-accent">✅ Compatível!</p>
+                    <p className="text-[13px] font-semibold mt-1">{selectedBrand} {selectedModel}</p>
+                    <p className="text-[11px] text-muted-foreground mt-1">
+                      O MotoPlay Pro é 100% compatível com sua moto.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={handleReset}
+                  className="w-full mt-2 rounded-xl border border-border bg-secondary/50 py-2.5 text-[12px] font-bold text-muted-foreground active:scale-[0.98] transition-transform"
+                >
+                  Verificar outra moto
+                </button>
+              </div>
+            ) : (
+              <>
+                {/* Search */}
+                <div className="relative mb-3">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <input
+                    type="text"
+                    placeholder="Buscar marca ou modelo..."
+                    value={search}
+                    onChange={(e) => { setSearch(e.target.value); setShowBrands(true); setSelectedBrand(null); setSelectedModel(null); }}
+                    onFocus={() => setShowBrands(true)}
+                    className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-4 text-[13px] font-medium placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                  />
+                </div>
+
+                {/* Brand selector */}
+                {!selectedBrand && (
+                  <div>
+                    <p className="text-[10px] font-bold uppercase text-muted-foreground mb-2">
+                      {search ? `${filteredBrands.length} marcas encontradas` : "Escolha a marca"}
+                    </p>
+                    <div className={`grid grid-cols-2 gap-2 transition-all ${showBrands || search ? "max-h-[400px]" : "max-h-[200px]"} overflow-y-auto overscroll-contain rounded-xl`}>
+                      {filteredBrands.map((brand, i) => (
+                        <button
+                          key={brand}
+                          onClick={() => handleBrandSelect(brand)}
+                          className="flex items-center gap-2 rounded-xl border border-border/60 bg-secondary/30 px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] hover:border-primary/40 hover:bg-primary/5 transition-all animate-fade-in"
+                          style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, animationFillMode: "both" }}
+                        >
+                          <Bike className="h-3.5 w-3.5 text-primary shrink-0" />
+                          <span className="truncate">{brand}</span>
+                        </button>
+                      ))}
+                    </div>
+                    {filteredBrands.length === 0 && (
+                      <p className="text-center text-[12px] text-muted-foreground py-4">
+                        Nenhuma marca encontrada. Mas não se preocupe — o MotoPlay Pro é compatível com 99% das motos!
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Model selector */}
+                {selectedBrand && !selectedModel && (
+                  <div className="animate-fade-in">
+                    <button
+                      onClick={() => { setSelectedBrand(null); setSearch(""); }}
+                      className="flex items-center gap-1 text-[11px] font-bold text-primary mb-2"
+                    >
+                      <ChevronDown className="h-3 w-3 rotate-90" /> Voltar
+                    </button>
+                    <p className="text-[10px] font-bold uppercase text-muted-foreground mb-2">
+                      {selectedBrand} — {models.length} modelos
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 max-h-[350px] overflow-y-auto overscroll-contain rounded-xl">
+                      {models.map((model, i) => (
+                        <button
+                          key={model}
+                          onClick={() => handleModelSelect(model)}
+                          className="rounded-xl border border-border/60 bg-secondary/30 px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] hover:border-primary/40 hover:bg-primary/5 transition-all animate-fade-in"
+                          style={{ animationDelay: `${Math.min(i * 20, 400)}ms`, animationFillMode: "both" }}
+                        >
+                          {model}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+
+          {/* Trust badge */}
+          <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
+            <Check className="h-3.5 w-3.5 text-accent" />
+            <span>Instalação universal — guidão de 22mm a 32mm</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ OFERTA — aparece após confirmar moto ═══════ */}
+      {confirmed && selectedBrand && selectedModel && (
+        <section ref={offerRef} id="oferta" className="py-12 bg-surface text-surface-foreground animate-fade-in">
+          <div className="container px-4">
+            <p className="text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Oferta exclusiva</p>
+            <h2 className="mt-2 text-center text-[22px] font-bold leading-tight tracking-[-0.03em]">
+              MotoPlay Pro para sua<br />
+              <span className="text-primary">{selectedBrand} {selectedModel}</span>
+            </h2>
+            <p className="mt-2 text-center text-[13px] text-surface-foreground/60">
+              Compatibilidade confirmada. Aproveite o desconto exclusivo.
+            </p>
+
+            {/* Product images */}
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <div className="overflow-hidden rounded-2xl border border-surface-foreground/10">
+                <img src={produtoCarplayAndroid} alt="MotoPlay Pro com CarPlay" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="overflow-hidden rounded-2xl border border-surface-foreground/10">
+                <img src={produtoSuporteMaleavel} alt="Suporte maleável universal" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+            <div className="mt-3 overflow-hidden rounded-2xl border border-surface-foreground/10">
+              <img src={produtoKitCompleto} alt="Kit completo MotoPlay Pro" className="w-full object-cover" loading="lazy" />
+            </div>
+
+            {/* Pricing card */}
+            <div className="mt-5 rounded-2xl border-2 border-primary bg-card overflow-hidden shadow-xl">
+              <div className="bg-primary px-4 py-3 text-center">
+                <p className="text-[13px] font-extrabold text-primary-foreground tracking-wide">🔥 OFERTA ESPECIAL — ÚLTIMAS UNIDADES</p>
               </div>
 
-              {/* Brand selector */}
-              {!selectedBrand && (
-                <div>
-                  <p className="text-[10px] font-bold uppercase text-muted-foreground mb-2">
-                    {search ? `${filteredBrands.length} marcas encontradas` : "Escolha a marca"}
-                  </p>
-                  <div className={`grid grid-cols-2 gap-2 transition-all ${showBrands || search ? "max-h-[400px]" : "max-h-[200px]"} overflow-y-auto overscroll-contain rounded-xl`}>
-                    {filteredBrands.map((brand, i) => (
-                      <button
-                        key={brand}
-                        onClick={() => handleBrandSelect(brand)}
-                        className="flex items-center gap-2 rounded-xl border border-border/60 bg-secondary/30 px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] hover:border-primary/40 hover:bg-primary/5 transition-all animate-fade-in"
-                        style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, animationFillMode: "both" }}
-                      >
-                        <Bike className="h-3.5 w-3.5 text-primary shrink-0" />
-                        <span className="truncate">{brand}</span>
-                      </button>
-                    ))}
-                  </div>
-                  {filteredBrands.length === 0 && (
-                    <p className="text-center text-[12px] text-muted-foreground py-4">
-                      Nenhuma marca encontrada. Mas não se preocupe — o MotoPlay Pro é compatível com 99% das motos!
-                    </p>
-                  )}
+              <div className="p-5 space-y-4">
+                {/* Price */}
+                <div className="text-center space-y-1">
+                  <p className="text-[13px] text-muted-foreground line-through">De R$ 497,00</p>
+                  <p className="text-[42px] font-extrabold text-primary leading-none tracking-[-0.04em]">R$ 297</p>
+                  <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 24,75</span> sem juros</p>
+                  <p className="text-[11px] text-muted-foreground">Apenas R$ 0,81/dia — menos que um café</p>
                 </div>
-              )}
 
-              {/* Model selector */}
-              {selectedBrand && !selectedModel && (
-                <div className="animate-fade-in">
-                  <button
-                    onClick={() => { setSelectedBrand(null); setSearch(""); }}
-                    className="flex items-center gap-1 text-[11px] font-bold text-primary mb-2"
-                  >
-                    <ChevronDown className="h-3 w-3 rotate-90" /> Voltar
-                  </button>
-                  <p className="text-[10px] font-bold uppercase text-muted-foreground mb-2">
-                    {selectedBrand} — {models.length} modelos
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 max-h-[350px] overflow-y-auto overscroll-contain rounded-xl">
-                    {models.map((model, i) => (
-                      <button
-                        key={model}
-                        onClick={() => handleModelSelect(model)}
-                        className="rounded-xl border border-border/60 bg-secondary/30 px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] hover:border-primary/40 hover:bg-primary/5 transition-all animate-fade-in"
-                        style={{ animationDelay: `${Math.min(i * 20, 400)}ms`, animationFillMode: "both" }}
-                      >
-                        {model}
-                      </button>
-                    ))}
-                  </div>
+                {/* Savings */}
+                <div className="flex items-center justify-center gap-3">
+                  <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 200</span>
+                  <span className="rounded-full bg-accent/15 px-3 py-1 text-[12px] font-bold text-accent-foreground">Frete GRÁTIS</span>
                 </div>
-              )}
-            </>
-          )}
-        </div>
 
-        {/* Trust badge */}
-        <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
-          <Check className="h-3.5 w-3.5 text-accent" />
-          <span>Instalação universal — guidão de 22mm a 32mm</span>
-        </div>
-      </div>
-    </section>
+                {/* What's included */}
+                <div className="rounded-xl bg-secondary/50 p-4 space-y-2">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary">O que você leva:</p>
+                  {[
+                    "Painel MotoPlay Pro 7\" HD",
+                    "Suporte universal para qualquer moto",
+                    "Kit completo de instalação",
+                    "CarPlay + Android Auto sem fio",
+                    "Garantia de satisfação 7 dias",
+                    "Suporte técnico por WhatsApp",
+                  ].map((t) => (
+                    <div key={t} className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
+                      <Check className="h-4 w-4 shrink-0 text-primary" />{t}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Moto badge */}
+                <div className="rounded-xl bg-accent/10 p-3 text-center">
+                  <p className="text-[12px] font-bold text-accent-foreground">
+                    ✅ Pronto para sua {selectedBrand} {selectedModel}
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <Button asChild size="lg" className="h-[56px] w-full rounded-full text-[15px] font-extrabold shadow-cta">
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                    COMPRAR AGORA COM 40% OFF <ArrowRight className="h-5 w-5" />
+                  </a>
+                </Button>
+
+                {/* Urgency */}
+                <div className="rounded-xl bg-destructive/10 p-3 text-center space-y-1">
+                  <p className="text-[12px] font-bold text-destructive">⚠️ Restam poucas unidades neste lote</p>
+                  <p className="text-2xl font-bold tracking-[0.1em] text-destructive font-display">{countdown}</p>
+                  <p className="text-[10px] text-destructive/60 uppercase font-bold tracking-[0.15em]">para esta oferta expirar</p>
+                </div>
+
+                {/* Trust signals */}
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { icon: Lock, text: "Compra 100% segura" },
+                    { icon: CreditCard, text: "Pix, cartão ou boleto" },
+                    { icon: Truck, text: "Entrega para todo Brasil" },
+                    { icon: Shield, text: "7 dias de garantia" },
+                  ].map(({ icon: Icon, text }) => (
+                    <div key={text} className="flex items-center gap-1.5 text-[10px] font-semibold text-muted-foreground">
+                      <Icon className="h-3 w-3 text-primary shrink-0" />{text}
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-center text-[10px] text-muted-foreground/60">
+                  +5.000 motociclistas já compraram • Avaliação 4,9/5
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
