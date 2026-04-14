@@ -293,7 +293,7 @@ export default function MotoSelector() {
             <p className="text-[13px] font-extrabold uppercase tracking-[0.15em] text-primary flex items-center gap-2 mb-1">
               <Bike className="h-4 w-4 animate-pulse" /> Selecione sua moto
             </p>
-            <p className="text-[11px] text-muted-foreground mb-3">🔥 Descubra se sua moto é compatível e garanta <strong className="text-primary">40% OFF</strong></p>
+            <p className="text-[11px] text-muted-foreground mb-3">Descubra se sua moto é compatível e garanta <strong className="text-primary">40% OFF</strong></p>
 
             {/* Confirmed state */}
             {confirmed && selectedBrand && selectedModel ? (
