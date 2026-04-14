@@ -103,27 +103,9 @@ const testimonials = [
 
 
 
-/* Countdown timer hook */
-const useCountdown = (hours: number) => {
-  const end = useRef(Date.now() + hours * 3600_000);
-  const [left, setLeft] = useState(hours * 3600);
-  useEffect(() => {
-    const t = setInterval(() => {
-      const diff = Math.max(0, Math.floor((end.current - Date.now()) / 1000));
-      setLeft(diff);
-    }, 1000);
-    return () => clearInterval(t);
-  }, []);
-  const h = String(Math.floor(left / 3600)).padStart(2, "0");
-  const m = String(Math.floor((left % 3600) / 60)).padStart(2, "0");
-  const s = String(left % 60).padStart(2, "0");
-  return `${h}:${m}:${s}`;
-};
-
 /* ── PAGE ── */
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const countdown = useCountdown(2);
   const [showStickyLogo, setShowStickyLogo] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
