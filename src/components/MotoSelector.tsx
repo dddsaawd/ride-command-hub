@@ -188,7 +188,10 @@ const MOTO_DATABASE: Record<string, string[]> = {
   ],
 };
 
-const BRAND_LIST = Object.keys(MOTO_DATABASE).sort();
+// Famous brands first, then the rest alphabetically
+const TOP_BRANDS = ["Honda", "Yamaha", "BMW Motorrad", "Kawasaki", "Harley-Davidson", "Ducati", "Suzuki", "KTM", "Triumph", "Royal Enfield"];
+const OTHER_BRANDS = Object.keys(MOTO_DATABASE).filter(b => !TOP_BRANDS.includes(b)).sort();
+const BRAND_LIST = [...TOP_BRANDS, ...OTHER_BRANDS];
 
 /* Countdown timer hook */
 const useCountdown = (hours: number) => {
