@@ -358,8 +358,6 @@ export default function MotoSelector() {
                         </button>
                         );
                       })}
-                        </button>
-                      ))}
                     </div>
                     {filteredBrands.length === 0 && (
                       <p className="text-center text-[12px] text-muted-foreground py-4">
