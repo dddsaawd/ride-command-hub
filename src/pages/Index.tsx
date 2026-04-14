@@ -662,74 +662,90 @@ const Index = () => {
       </section>
 
       {/* ═══════ OFERTA FINAL ═══════ */}
-      <section id="oferta" className="py-10">
+      <section id="oferta" className="py-12 bg-surface text-surface-foreground">
         <div className="container px-4">
-          <div className="rounded-2xl border border-primary/20 bg-surface text-surface-foreground overflow-hidden shadow-cta">
-            <div className="bg-primary/10 p-4 text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Última chance</p>
-              <h2 className="mt-1 text-[18px] font-bold leading-tight">
-                Cansado de arriscar seu celular de R$3.000 num suporte de R$30?
-              </h2>
-              <p className="mt-1 text-[12px] text-surface-foreground/60">Perder corrida porque o GPS travou? Celular molhado pela chuva? Câmera danificada pela vibração? <strong className="text-surface-foreground">Nunca mais.</strong></p>
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Oferta por tempo limitado</p>
+          <h2 className="mt-2 text-center text-[22px] font-bold leading-tight tracking-[-0.03em]">
+            Garanta o MotoPlay Pro<br />com <span className="text-primary">40% de desconto</span>
+          </h2>
+          <p className="mt-2 text-center text-[13px] text-surface-foreground/60 leading-relaxed">
+            Um celular de R$3.000 num suporte de R$30 — faz sentido?<br />
+            O MotoPlay Pro custa menos que um seguro de tela.
+          </p>
+
+          {/* Product image */}
+          <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
+            <img src={produtoSuporteMaleavel} alt="MotoPlay Pro com suporte maleável" className="w-full object-cover" loading="lazy" />
+          </div>
+
+          {/* Pricing card */}
+          <div className="mt-5 rounded-2xl border-2 border-primary bg-card overflow-hidden shadow-xl">
+            <div className="bg-primary px-4 py-3 text-center">
+              <p className="text-[13px] font-extrabold text-primary-foreground tracking-wide">🔥 OFERTA ESPECIAL — ÚLTIMAS UNIDADES</p>
             </div>
 
-            <div className="p-4 space-y-3">
-              <div className="flex items-center gap-2 text-[11px] font-bold text-primary">
-                <span className="rounded-full bg-primary/15 px-2 py-0.5">-40% OFF</span>
-                <span className="text-surface-foreground/50">23 pessoas vendo agora</span>
+            <div className="p-5 space-y-4">
+              {/* Price */}
+              <div className="text-center space-y-1">
+                <p className="text-[13px] text-muted-foreground line-through">De R$ 497,00</p>
+                <p className="text-[42px] font-extrabold text-primary leading-none tracking-[-0.04em]">R$ 297</p>
+                <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 24,75</span> sem juros</p>
+                <p className="text-[11px] text-muted-foreground">Apenas R$ 0,81/dia — menos que um café</p>
               </div>
 
-              <div className="text-center">
-                <p className="text-[14px] text-surface-foreground/40 line-through">R$ 497</p>
-                <p className="text-4xl font-bold text-primary tracking-[-0.04em]">R$ 297</p>
-                <p className="text-[13px] text-surface-foreground/60">ou 12× de <strong className="text-surface-foreground">R$ 24,75</strong> sem juros</p>
-                <p className="mt-1 text-[11px] text-surface-foreground/40">Apenas R$ 0,81 por dia — menos que um café</p>
+              {/* Savings badge */}
+              <div className="flex items-center justify-center gap-3">
+                <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 200</span>
+                <span className="rounded-full bg-accent/15 px-3 py-1 text-[12px] font-bold text-accent-foreground">Frete GRÁTIS</span>
               </div>
 
-              <div className="rounded-xl bg-primary px-4 py-2.5 text-center">
-                <p className="text-[12px] font-bold text-primary-foreground">Economize R$ 200 + Frete Grátis</p>
-              </div>
-
-              <ul className="space-y-2">
+              {/* What's included */}
+              <div className="rounded-xl bg-secondary/50 p-4 space-y-2">
+                <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary">O que você leva:</p>
                 {[
-                  "TODOS os apps de entrega: iFood, Uber, 99, Rappi",
-                  "TODOS os GPS: Waze, Google Maps — sem travar",
-                  "Celular seguro no bolso — sem roubo, sem dano",
-                  "Chuva, sol, vibração — feito para rotina REAL",
-                  "Liga com a moto — zero botão, zero espera",
+                  "Painel MotoPlay Pro 7\" HD",
+                  "Suporte universal para qualquer moto",
+                  "Kit completo de instalação",
+                  "CarPlay + Android Auto sem fio",
+                  "Garantia de satisfação 7 dias",
+                  "Suporte técnico por WhatsApp",
                 ].map((t) => (
-                  <li key={t} className="flex items-start gap-2 text-[12px] font-semibold text-surface-foreground">
-                    <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />{t}
-                  </li>
+                  <div key={t} className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
+                    <Check className="h-4 w-4 shrink-0 text-primary" />{t}
+                  </div>
                 ))}
-              </ul>
-
-              <div className="grid grid-cols-2 gap-2 text-[10px] text-surface-foreground/60 font-semibold">
-                <div className="flex items-center gap-1"><Truck className="h-3 w-3 text-primary" /> Frete GRÁTIS</div>
-                <div className="flex items-center gap-1"><Shield className="h-3 w-3 text-primary" /> Garantia de satisfação</div>
-                <div className="flex items-center gap-1"><Package className="h-3 w-3 text-primary" /> Kit completo</div>
-                <div className="flex items-center gap-1"><MessageSquare className="h-3 w-3 text-primary" /> Suporte WhatsApp</div>
               </div>
 
-              <div className="rounded-xl bg-destructive/10 p-3 text-center">
-                <p className="text-[12px] font-bold text-destructive">Últimas unidades do lote — preço sobe amanhã</p>
-              </div>
-
-              <Button asChild size="lg" className="h-[54px] w-full rounded-full text-[14px] font-extrabold shadow-cta">
-                <a href={CTA_LINK}>GARANTIR O MEU COM 40% OFF <ArrowRight className="h-5 w-5" /></a>
+              {/* CTA */}
+              <Button asChild size="lg" className="h-[56px] w-full rounded-full text-[15px] font-extrabold shadow-cta animate-pulse">
+                <a href="https://wa.me/5500000000000?text=Quero%20o%20MotoPlay%20Pro%20com%2040%25%20OFF" target="_blank" rel="noopener noreferrer">
+                  COMPRAR AGORA COM 40% OFF <ArrowRight className="h-5 w-5" />
+                </a>
               </Button>
 
-              {/* Countdown */}
-              <div className="text-center">
-                <p className="text-2xl font-bold tracking-[0.1em] text-primary font-display">{countdown}</p>
-                <p className="text-[10px] text-surface-foreground/40 uppercase font-bold tracking-[0.2em]">restantes nesta oferta</p>
+              {/* Urgency */}
+              <div className="rounded-xl bg-destructive/10 p-3 text-center space-y-1">
+                <p className="text-[12px] font-bold text-destructive">⚠️ Restam poucas unidades neste lote</p>
+                <p className="text-2xl font-bold tracking-[0.1em] text-destructive font-display">{countdown}</p>
+                <p className="text-[10px] text-destructive/60 uppercase font-bold tracking-[0.15em]">para esta oferta expirar</p>
               </div>
 
-              <p className="text-center text-[10px] text-surface-foreground/40">
-                Compra 100% segura • SSL • Pix, cartão ou boleto
-              </p>
-              <p className="text-center text-[10px] text-surface-foreground/30">
-                +5.000 motociclistas já garantiram • Entregadores, viajantes e urbanos confiam no MotoPlay Pro
+              {/* Trust signals */}
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { icon: Lock, text: "Compra 100% segura" },
+                  { icon: CreditCard, text: "Pix, cartão ou boleto" },
+                  { icon: Truck, text: "Entrega para todo Brasil" },
+                  { icon: Shield, text: "7 dias de garantia" },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-1.5 text-[10px] font-semibold text-muted-foreground">
+                    <Icon className="h-3 w-3 text-primary shrink-0" />{text}
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-[10px] text-muted-foreground/60">
+                +5.000 motociclistas já compraram • Avaliação 4,9/5
               </p>
             </div>
           </div>
@@ -737,22 +753,26 @@ const Index = () => {
       </section>
 
       {/* ═══════ CTA FINAL ═══════ */}
-      <section className="bg-surface py-10 text-surface-foreground">
-        <div className="container px-4 text-center space-y-3">
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Última chance — preço sobe amanhã</p>
-          <h2 className="text-[20px] font-bold leading-tight">Enquanto você pensa, seu celular continua em risco.</h2>
-          <p className="text-[13px] text-surface-foreground/60">Entregador, viajante ou urbano — o MotoPlay Pro é pra quem quer controle total no guidão.</p>
+      <section className="py-10">
+        <div className="container px-4 text-center space-y-4">
+          <h2 className="text-[20px] font-bold leading-tight">
+            Enquanto você pensa,<br />seu celular continua em risco.
+          </h2>
+          <p className="text-[13px] text-muted-foreground leading-relaxed">
+            Chuva, vibração, roubo — cada dia sem o MotoPlay Pro é um dia de prejuízo.
+          </p>
 
-          <div className="flex justify-center gap-4 text-[11px] text-surface-foreground/50 font-semibold">
-            <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> Compra segura</span>
-            <span className="flex items-center gap-1"><Truck className="h-3 w-3" /> Frete grátis</span>
-            <span className="flex items-center gap-1"><Heart className="h-3 w-3" /> +5.000 satisfeitos</span>
-          </div>
-
-          <Button asChild size="lg" className="h-[52px] w-full rounded-full text-[14px] font-extrabold shadow-cta sm:w-auto sm:px-10">
-            <a href={CTA_LINK}>GARANTIR O MEU COM 40% OFF <ArrowRight className="h-5 w-5" /></a>
+          <Button asChild size="lg" className="h-[52px] w-full rounded-full text-[14px] font-extrabold shadow-cta">
+            <a href="https://wa.me/5500000000000?text=Quero%20o%20MotoPlay%20Pro%20com%2040%25%20OFF" target="_blank" rel="noopener noreferrer">
+              GARANTIR O MEU AGORA <ArrowRight className="h-5 w-5" />
+            </a>
           </Button>
-          <p className="text-[10px] text-surface-foreground/30">Pagamento seguro • Pix com desconto • Suporte real por WhatsApp</p>
+
+          <div className="flex justify-center gap-4 text-[11px] text-muted-foreground font-semibold">
+            <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> Seguro</span>
+            <span className="flex items-center gap-1"><Truck className="h-3 w-3" /> Frete grátis</span>
+            <span className="flex items-center gap-1"><Heart className="h-3 w-3" /> +5.000 clientes</span>
+          </div>
         </div>
       </section>
 
