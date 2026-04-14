@@ -387,6 +387,7 @@ export default function MotoSelector() {
                 )}
               </>
             )}
+            </div>
           </div>
 
           {/* Trust badge */}
