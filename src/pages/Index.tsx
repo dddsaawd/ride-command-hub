@@ -143,7 +143,7 @@ const Index = () => {
 
       {/* ═══════ FIXED HEADER ═══════ */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-4 py-3 shadow-sm transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-transparent px-4 py-3 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
       >
         <img src={logoMotoplay} alt="MotoPlay Pro" className="h-9 w-auto" />
         <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-[5px] p-1" aria-label="Abrir menu">
