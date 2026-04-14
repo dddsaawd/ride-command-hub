@@ -145,7 +145,7 @@ const Index = () => {
       <div
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-transparent px-4 py-3 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
       >
-        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-14 w-auto -ml-1" />
+        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-16 w-auto -ml-1" />
         <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-[5px] p-1" aria-label="Abrir menu">
           <span className="block h-[2px] w-6 bg-white rounded-full" />
           <span className="block h-[2px] w-6 bg-white rounded-full" />
