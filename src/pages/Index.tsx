@@ -220,9 +220,6 @@ const Index = () => {
               ))}
             </ul>
 
-            <Button asChild size="lg" className="h-[52px] w-full rounded-full text-[14px] font-extrabold shadow-cta">
-              <a href={CTA_LINK}>QUERO PROTEGER MEU CELULAR AGORA <ArrowRight className="h-5 w-5" /></a>
-            </Button>
           </div>
 
           {/* Hero VSL mobile */}
