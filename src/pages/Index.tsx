@@ -91,7 +91,7 @@ const faqs = [
   { q: "É difícil instalar?", a: "Não. Kit completo incluso — instala em poucos minutos sem ferramentas especiais." },
   { q: "A tela é visível no sol?", a: "Sim. Tela IPS HD com alta luminosidade, visível mesmo sob luz solar direta." },
   { q: "Tem garantia?", a: "Sim. Garantia de satisfação de 7 dias — se não gostar, devolvemos seu dinheiro." },
-  { q: "Qual o prazo de entrega?", a: "Envio rápido para todo o Brasil com frete grátis. Prazo médio de 5-10 dias úteis." },
+  { q: "Qual o prazo de entrega?", a: "Envio rápido para todo o Brasil com frete grátis. Prazo médio de 3-6 dias." },
 ];
 
 const testimonials = [
