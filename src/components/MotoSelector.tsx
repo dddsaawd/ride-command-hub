@@ -188,7 +188,10 @@ const MOTO_DATABASE: Record<string, string[]> = {
   ],
 };
 
-const BRAND_LIST = Object.keys(MOTO_DATABASE).sort();
+// Famous brands first, then the rest alphabetically
+const TOP_BRANDS = ["Honda", "Yamaha", "BMW Motorrad", "Kawasaki", "Harley-Davidson", "Ducati", "Suzuki", "KTM", "Triumph", "Royal Enfield"];
+const OTHER_BRANDS = Object.keys(MOTO_DATABASE).filter(b => !TOP_BRANDS.includes(b)).sort();
+const BRAND_LIST = [...TOP_BRANDS, ...OTHER_BRANDS];
 
 /* Countdown timer hook */
 const useCountdown = (hours: number) => {
@@ -284,10 +287,13 @@ export default function MotoSelector() {
           </div>
 
           {/* Selector card */}
-          <div className="mt-5 rounded-2xl border border-border bg-card p-4 shadow-sm">
-            <p className="text-[12px] font-bold uppercase tracking-[0.15em] text-primary flex items-center gap-2 mb-3">
-              <Bike className="h-4 w-4" /> Selecione sua moto
+          <div className="mt-5 rounded-2xl border-2 border-primary/30 bg-card p-4 shadow-lg shadow-primary/5 relative overflow-hidden">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
+            <div className="relative">
+            <p className="text-[13px] font-extrabold uppercase tracking-[0.15em] text-primary flex items-center gap-2 mb-1">
+              <Bike className="h-4 w-4 animate-pulse" /> Selecione sua moto
             </p>
+            <p className="text-[11px] text-muted-foreground mb-3">🔥 Descubra se sua moto é compatível e garanta <strong className="text-primary">40% OFF</strong></p>
 
             {/* Confirmed state */}
             {confirmed && selectedBrand && selectedModel ? (
@@ -333,17 +339,25 @@ export default function MotoSelector() {
                       {search ? `${filteredBrands.length} marcas encontradas` : "Escolha a marca"}
                     </p>
                     <div className={`grid grid-cols-2 gap-2 transition-all ${showBrands || search ? "max-h-[400px]" : "max-h-[200px]"} overflow-y-auto overscroll-contain rounded-xl`}>
-                      {filteredBrands.map((brand, i) => (
+                      {filteredBrands.map((brand, i) => {
+                        const isTop = TOP_BRANDS.includes(brand);
+                        return (
                         <button
                           key={brand}
                           onClick={() => handleBrandSelect(brand)}
-                          className="flex items-center gap-2 rounded-xl border border-border/60 bg-secondary/30 px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] hover:border-primary/40 hover:bg-primary/5 transition-all animate-fade-in"
+                          className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] transition-all animate-fade-in ${
+                            isTop
+                              ? "border-primary/40 bg-primary/10 hover:bg-primary/20 hover:border-primary/60 shadow-sm"
+                              : "border-border/60 bg-secondary/30 hover:border-primary/40 hover:bg-primary/5"
+                          }`}
                           style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, animationFillMode: "both" }}
                         >
-                          <Bike className="h-3.5 w-3.5 text-primary shrink-0" />
+                          <Bike className={`h-3.5 w-3.5 shrink-0 ${isTop ? "text-primary" : "text-muted-foreground"}`} />
                           <span className="truncate">{brand}</span>
+                          {isTop && <span className="ml-auto text-[8px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full">TOP</span>}
                         </button>
-                      ))}
+                        );
+                      })}
                     </div>
                     {filteredBrands.length === 0 && (
                       <p className="text-center text-[12px] text-muted-foreground py-4">
@@ -381,6 +395,7 @@ export default function MotoSelector() {
                 )}
               </>
             )}
+            </div>
           </div>
 
           {/* Trust badge */}
