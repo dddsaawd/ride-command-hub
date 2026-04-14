@@ -396,6 +396,32 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════ VSL 2 — PROVA SOCIAL / CONVERSÃO ═══════ */}
+      <section className="py-10 bg-secondary/40">
+        <div className="container px-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Veja na prática</p>
+          <h2 className="mt-1 text-[20px] font-bold leading-tight">Assista e tire suas últimas dúvidas</h2>
+          <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
+            Veja como o MotoPlay Pro funciona no dia a dia — instalação, apps, GPS e tudo mais.
+          </p>
+
+          <div className="relative mt-5 overflow-hidden rounded-2xl border border-border/80">
+            <video
+              className="w-full aspect-[9/16] max-h-[520px] object-cover bg-black"
+              controls
+              playsInline
+              preload="metadata"
+            >
+              <source src="/videos/vsl2.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <Button asChild size="lg" className="mt-5 h-[50px] w-full rounded-full text-[13px] font-extrabold shadow-cta">
+            <a href={CTA_LINK}>QUERO O MEU MOTOPLAY PRO <ArrowRight className="h-5 w-5" /></a>
+          </Button>
+        </div>
+      </section>
+
       {/* ═══════ RECURSOS / SPECS ═══════ */}
       <section className="py-10 bg-surface text-surface-foreground">
         <div className="container px-4">
