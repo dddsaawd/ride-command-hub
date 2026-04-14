@@ -147,9 +147,9 @@ const Index = () => {
       >
         <img src={logoMotoplay} alt="MotoPlay Pro" className="h-12 w-auto" />
         <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-[5px] p-1" aria-label="Abrir menu">
-          <span className="block h-[2px] w-6 bg-foreground rounded-full" />
-          <span className="block h-[2px] w-6 bg-foreground rounded-full" />
-          <span className="block h-[2px] w-4 bg-foreground rounded-full" />
+          <span className="block h-[2px] w-6 bg-white rounded-full" />
+          <span className="block h-[2px] w-6 bg-white rounded-full" />
+          <span className="block h-[2px] w-4 bg-white rounded-full" />
         </button>
       </div>
 
