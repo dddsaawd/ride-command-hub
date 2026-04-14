@@ -339,15 +339,25 @@ export default function MotoSelector() {
                       {search ? `${filteredBrands.length} marcas encontradas` : "Escolha a marca"}
                     </p>
                     <div className={`grid grid-cols-2 gap-2 transition-all ${showBrands || search ? "max-h-[400px]" : "max-h-[200px]"} overflow-y-auto overscroll-contain rounded-xl`}>
-                      {filteredBrands.map((brand, i) => (
+                      {filteredBrands.map((brand, i) => {
+                        const isTop = TOP_BRANDS.includes(brand);
+                        return (
                         <button
                           key={brand}
                           onClick={() => handleBrandSelect(brand)}
-                          className="flex items-center gap-2 rounded-xl border border-border/60 bg-secondary/30 px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] hover:border-primary/40 hover:bg-primary/5 transition-all animate-fade-in"
+                          className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 text-left text-[12px] font-semibold active:scale-[0.97] transition-all animate-fade-in ${
+                            isTop
+                              ? "border-primary/40 bg-primary/10 hover:bg-primary/20 hover:border-primary/60 shadow-sm"
+                              : "border-border/60 bg-secondary/30 hover:border-primary/40 hover:bg-primary/5"
+                          }`}
                           style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, animationFillMode: "both" }}
                         >
-                          <Bike className="h-3.5 w-3.5 text-primary shrink-0" />
+                          <Bike className={`h-3.5 w-3.5 shrink-0 ${isTop ? "text-primary" : "text-muted-foreground"}`} />
                           <span className="truncate">{brand}</span>
+                          {isTop && <span className="ml-auto text-[8px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full">TOP</span>}
+                        </button>
+                        );
+                      })}
                         </button>
                       ))}
                     </div>
