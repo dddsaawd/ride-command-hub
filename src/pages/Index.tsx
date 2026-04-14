@@ -40,6 +40,7 @@ import {
 } from "lucide-react";
 
 import logoMotoplay from "@/assets/logo.png";
+import logoDark from "@/assets/logo-dark.png";
 import heroImg from "@/assets/motoplay-hero.jpg";
 import entregadorImg from "@/assets/motoplay-entregador.jpg";
 import logoIfood from "@/assets/logo-ifood.png";
