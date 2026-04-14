@@ -53,6 +53,17 @@ import logoYoutube from "@/assets/logo-youtube.png";
 import logoZe from "@/assets/logo-ze.png";
 import logoKeeta from "@/assets/logo-keeta.png";
 
+import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
+import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
+import produtoInstalacao from "@/assets/produto-instalacao.png";
+import produtoSuporteRotativo from "@/assets/produto-suporte-rotativo.png";
+import produtoUnidadeCompleta from "@/assets/produto-unidade-completa.png";
+import produtoCarplayAndroid from "@/assets/produto-carplay-android.webp";
+import produtoAntiReflexo from "@/assets/produto-anti-reflexo.webp";
+import produtoSuporteMaleavel from "@/assets/produto-suporte-maleavel.webp";
+import produtoMotoBmw from "@/assets/produto-moto-bmw.webp";
+import produtoKitCompleto from "@/assets/produto-kit-completo.webp";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -281,6 +292,11 @@ const Index = () => {
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Por que MotoPlay Pro</p>
           <h2 className="mt-1 text-[20px] font-bold leading-tight tracking-[-0.03em]">4 pilares que transformam sua experiência</h2>
 
+          {/* Product hero image */}
+          <div className="mt-5 overflow-hidden rounded-2xl">
+            <img src={produtoMotoBmw} alt="MotoPlay Pro instalado em moto BMW" className="w-full object-cover" loading="lazy" />
+          </div>
+
           <div className="mt-5 grid grid-cols-2 gap-3">
             {([
               { icon: Zap, title: "Tecnologia Útil", desc: "GPS, música, chamadas e apps no guidão" },
@@ -304,7 +320,17 @@ const Index = () => {
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Simples no dia a dia</p>
           <h2 className="mt-1 text-[20px] font-bold leading-tight">Benefícios que você sente na hora.</h2>
 
+          {/* Installation + Anti-reflexo images */}
           <div className="mt-5 grid grid-cols-2 gap-3">
+            <div className="overflow-hidden rounded-2xl">
+              <img src={produtoInstalacao} alt="Instalação fácil e flexível" className="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div className="overflow-hidden rounded-2xl">
+              <img src={produtoAntiReflexo} alt="Tela anti-reflexo HD" className="w-full h-full object-cover" loading="lazy" />
+            </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-2 gap-3">
             {([
               { icon: Wrench, title: "Fácil de Instalar", desc: "Poucas peças, sem ferramentas especiais" },
               { icon: SunMedium, title: "Tela Visível no Sol", desc: "Alta luminosidade, sem reflexos" },
@@ -331,7 +357,7 @@ const Index = () => {
           </p>
 
           <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
-            <img src={entregadorImg} alt="Entregador usando MotoPlay Pro" className="w-full h-[180px] object-cover" loading="lazy" />
+            <img src={produtoAppsEntregas} alt="Apps de entrega compatíveis - iFood, Uber, 99, Rappi" className="w-full object-cover" loading="lazy" />
           </div>
 
           <div className="mt-5 space-y-3">
@@ -399,6 +425,11 @@ const Index = () => {
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Recursos</p>
           <h2 className="mt-1 text-[20px] font-bold leading-tight">Tudo o que importa, na sua tela</h2>
 
+          {/* Product showcase images */}
+          <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
+            <img src={produtoUnidadeCompleta} alt="MotoPlay Pro - unidade completa com CarPlay e Android Auto" className="w-full object-cover" loading="lazy" />
+          </div>
+
           <div className="mt-5 grid grid-cols-2 gap-3">
             {([
               { icon: Smartphone, title: "CarPlay e Android Auto", desc: "Sem fio" },
@@ -416,6 +447,11 @@ const Index = () => {
             ))}
           </div>
 
+          {/* Suporte rotativo */}
+          <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
+            <img src={produtoSuporteRotativo} alt="Suporte maleável rotativo com múltiplos ângulos" className="w-full object-cover" loading="lazy" />
+          </div>
+
           {/* TPMS & DVR */}
           <div className="mt-5 rounded-2xl border border-primary/15 bg-panel p-4">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">Versões Superiores</p>
@@ -431,6 +467,11 @@ const Index = () => {
                 <p className="text-[11px] text-surface-foreground/60">Câmera integrada com gravação contínua.</p>
               </div>
             </div>
+          </div>
+
+          {/* Prova d'água */}
+          <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
+            <img src={produtoProvaDagua} alt="MotoPlay Pro à prova d'água IP67" className="w-full object-cover" loading="lazy" />
           </div>
 
           {/* Specs table */}
@@ -464,7 +505,12 @@ const Index = () => {
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">O que vem no kit</p>
           <h2 className="mt-1 text-[20px] font-bold leading-tight">Kit completo — 5 itens</h2>
 
-          <div className="mt-5 space-y-3">
+          {/* Kit photo */}
+          <div className="mt-5 overflow-hidden rounded-2xl">
+            <img src={produtoKitCompleto} alt="Kit completo MotoPlay Pro com todos os acessórios" className="w-full object-cover" loading="lazy" />
+          </div>
+
+          <div className="mt-4 space-y-3">
             {([
               { icon: Monitor, title: "Painel MotoPlay Pro", desc: "Tela inteligente com CarPlay/Android Auto" },
               { icon: Settings, title: "Suporte de fixação universal", desc: "Adaptável a qualquer guidão" },
@@ -491,7 +537,12 @@ const Index = () => {
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Em Ação</p>
           <h2 className="mt-1 text-[20px] font-bold leading-tight">Veja funcionando na prática</h2>
 
-          <div className="mt-5 grid gap-3">
+          {/* CarPlay/Android Auto showcase */}
+          <div className="mt-5 overflow-hidden rounded-2xl">
+            <img src={produtoCarplayAndroid} alt="MotoPlay Pro com CarPlay e Android Auto" className="w-full object-cover" loading="lazy" />
+          </div>
+
+          <div className="mt-4 grid gap-3">
             {[
               { icon: Map, title: "Navegação com Waze", bg: "bg-primary/10" },
               { icon: PhoneCall, title: "Chamada pelo Bluetooth", bg: "bg-accent/10" },
