@@ -779,7 +779,7 @@ const Index = () => {
       {/* ═══════ STICKY CTA MOBILE ═══════ */}
       <div className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-t from-background via-background/95 to-transparent px-4 pb-3 pt-5 md:hidden">
         <Button asChild size="lg" className="h-[50px] w-full rounded-full text-[13px] font-extrabold shadow-cta">
-          <a href={CTA_LINK}>GARANTIR O MEU COM 40% OFF 🔥 <ArrowRight className="h-5 w-5" /></a>
+          <a href="#oferta">GARANTIR O MEU COM 40% OFF 🔥 <ArrowRight className="h-5 w-5" /></a>
         </Button>
       </div>
     </main>
