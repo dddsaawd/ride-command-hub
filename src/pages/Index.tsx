@@ -68,7 +68,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 /* ── helpers ── */
-const CTA_LINK = "#oferta";
+const CTA_LINK = "#compatibilidade";
 
 const appLogos = [
   { src: logoIfood, alt: "iFood" },
