@@ -303,13 +303,8 @@ const Index = () => {
           <h2 className="mt-1 text-[20px] font-bold leading-tight">Benefícios que você sente na hora.</h2>
 
           {/* Installation + Anti-reflexo images */}
-          <div className="mt-5 grid grid-cols-2 gap-3">
-            <div className="overflow-hidden rounded-2xl">
-              <img src={produtoInstalacao} alt="Instalação fácil e flexível" className="w-full h-full object-cover" loading="lazy" />
-            </div>
-            <div className="overflow-hidden rounded-2xl">
-              <img src={produtoAntiReflexo} alt="Tela anti-reflexo HD" className="w-full h-full object-cover" loading="lazy" />
-            </div>
+          <div className="mt-5 overflow-hidden rounded-2xl">
+            <img src={produtoMotoBmw} alt="MotoPlay Pro instalado na moto" className="w-full h-auto object-cover rounded-2xl" loading="lazy" />
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
