@@ -304,7 +304,7 @@ const Index = () => {
 
           {/* Installation + Anti-reflexo images */}
           <div className="mt-5 overflow-hidden rounded-2xl">
-            <img src={produtoMotoBmw} alt="MotoPlay Pro instalado na moto" className="w-full h-auto object-cover rounded-2xl" loading="lazy" />
+            <img src={produtoInstalacao} alt="Instalação fácil e prática do MotoPlay Pro" className="w-full h-auto object-cover rounded-2xl" loading="lazy" />
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
