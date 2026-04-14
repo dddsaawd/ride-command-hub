@@ -53,6 +53,17 @@ import logoYoutube from "@/assets/logo-youtube.png";
 import logoZe from "@/assets/logo-ze.png";
 import logoKeeta from "@/assets/logo-keeta.png";
 
+import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
+import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
+import produtoInstalacao from "@/assets/produto-instalacao.png";
+import produtoSuporteRotativo from "@/assets/produto-suporte-rotativo.png";
+import produtoUnidadeCompleta from "@/assets/produto-unidade-completa.png";
+import produtoCarplayAndroid from "@/assets/produto-carplay-android.webp";
+import produtoAntiReflexo from "@/assets/produto-anti-reflexo.webp";
+import produtoSuporteMaleavel from "@/assets/produto-suporte-maleavel.webp";
+import produtoMotoBmw from "@/assets/produto-moto-bmw.webp";
+import produtoKitCompleto from "@/assets/produto-kit-completo.webp";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
