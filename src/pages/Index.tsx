@@ -164,8 +164,8 @@ const Index = () => {
       <div
         className={`fixed top-0 right-0 z-[70] h-full w-[280px] bg-white shadow-2xl transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        <div className="flex items-center justify-between px-5 py-4 border-b border-border">
-          <img src={logoDark} alt="MotoPlay Pro" className="h-7 w-auto" />
+        <div className="flex items-center justify-between px-4 py-4 border-b border-border">
+          <img src={logoDark} alt="MotoPlay Pro" className="h-7 w-auto -ml-1" />
           <button onClick={() => setMenuOpen(false)} className="p-1" aria-label="Fechar menu">
             <X className="h-6 w-6 text-foreground" />
           </button>
