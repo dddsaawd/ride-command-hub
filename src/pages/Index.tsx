@@ -661,110 +661,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ OFERTA FINAL ═══════ */}
-      <section id="oferta" className="py-12 bg-surface text-surface-foreground">
-        <div className="container px-4">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Oferta por tempo limitado</p>
-          <h2 className="mt-2 text-center text-[22px] font-bold leading-tight tracking-[-0.03em]">
-            Garanta o MotoPlay Pro<br />com <span className="text-primary">40% de desconto</span>
-          </h2>
-          <p className="mt-2 text-center text-[13px] text-surface-foreground/60 leading-relaxed">
-            Um celular de R$3.000 num suporte de R$30 — faz sentido?<br />
-            O MotoPlay Pro custa menos que um seguro de tela.
-          </p>
-
-          {/* Product image */}
-          <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
-            <img src={produtoSuporteMaleavel} alt="MotoPlay Pro com suporte maleável" className="w-full object-cover" loading="lazy" />
-          </div>
-
-          {/* Pricing card */}
-          <div className="mt-5 rounded-2xl border-2 border-primary bg-card overflow-hidden shadow-xl">
-            <div className="bg-primary px-4 py-3 text-center">
-              <p className="text-[13px] font-extrabold text-primary-foreground tracking-wide">🔥 OFERTA ESPECIAL — ÚLTIMAS UNIDADES</p>
-            </div>
-
-            <div className="p-5 space-y-4">
-              {/* Price */}
-              <div className="text-center space-y-1">
-                <p className="text-[13px] text-muted-foreground line-through">De R$ 497,00</p>
-                <p className="text-[42px] font-extrabold text-primary leading-none tracking-[-0.04em]">R$ 297</p>
-                <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 24,75</span> sem juros</p>
-                <p className="text-[11px] text-muted-foreground">Apenas R$ 0,81/dia — menos que um café</p>
-              </div>
-
-              {/* Savings badge */}
-              <div className="flex items-center justify-center gap-3">
-                <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 200</span>
-                <span className="rounded-full bg-accent/15 px-3 py-1 text-[12px] font-bold text-accent-foreground">Frete GRÁTIS</span>
-              </div>
-
-              {/* What's included */}
-              <div className="rounded-xl bg-secondary/50 p-4 space-y-2">
-                <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary">O que você leva:</p>
-                {[
-                  "Painel MotoPlay Pro 7\" HD",
-                  "Suporte universal para qualquer moto",
-                  "Kit completo de instalação",
-                  "CarPlay + Android Auto sem fio",
-                  "Garantia de satisfação 7 dias",
-                  "Suporte técnico por WhatsApp",
-                ].map((t) => (
-                  <div key={t} className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
-                    <Check className="h-4 w-4 shrink-0 text-primary" />{t}
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <Button asChild size="lg" className="h-[56px] w-full rounded-full text-[15px] font-extrabold shadow-cta animate-pulse">
-                <a href="https://wa.me/5500000000000?text=Quero%20o%20MotoPlay%20Pro%20com%2040%25%20OFF" target="_blank" rel="noopener noreferrer">
-                  COMPRAR AGORA COM 40% OFF <ArrowRight className="h-5 w-5" />
-                </a>
-              </Button>
-
-              {/* Urgency */}
-              <div className="rounded-xl bg-destructive/10 p-3 text-center space-y-1">
-                <p className="text-[12px] font-bold text-destructive">⚠️ Restam poucas unidades neste lote</p>
-                <p className="text-2xl font-bold tracking-[0.1em] text-destructive font-display">{countdown}</p>
-                <p className="text-[10px] text-destructive/60 uppercase font-bold tracking-[0.15em]">para esta oferta expirar</p>
-              </div>
-
-              {/* Trust signals */}
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { icon: Lock, text: "Compra 100% segura" },
-                  { icon: CreditCard, text: "Pix, cartão ou boleto" },
-                  { icon: Truck, text: "Entrega para todo Brasil" },
-                  { icon: Shield, text: "7 dias de garantia" },
-                ].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-1.5 text-[10px] font-semibold text-muted-foreground">
-                    <Icon className="h-3 w-3 text-primary shrink-0" />{text}
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-center text-[10px] text-muted-foreground/60">
-                +5.000 motociclistas já compraram • Avaliação 4,9/5
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ═══════ CTA FINAL ═══════ */}
       <section className="py-10">
         <div className="container px-4 text-center space-y-4">
           <h2 className="text-[20px] font-bold leading-tight">
-            Enquanto você pensa,<br />seu celular continua em risco.
+            Ainda não escolheu sua moto?<br />Volte e selecione acima.
           </h2>
           <p className="text-[13px] text-muted-foreground leading-relaxed">
-            Chuva, vibração, roubo — cada dia sem o MotoPlay Pro é um dia de prejuízo.
+            Confirme a compatibilidade e desbloqueie o desconto exclusivo de 40%.
           </p>
 
           <Button asChild size="lg" className="h-[52px] w-full rounded-full text-[14px] font-extrabold shadow-cta">
-            <a href="https://wa.me/5500000000000?text=Quero%20o%20MotoPlay%20Pro%20com%2040%25%20OFF" target="_blank" rel="noopener noreferrer">
-              GARANTIR O MEU AGORA <ArrowRight className="h-5 w-5" />
+            <a href="#compatibilidade">
+              VERIFICAR MINHA MOTO <ArrowRight className="h-5 w-5" />
             </a>
           </Button>
 
