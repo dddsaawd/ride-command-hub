@@ -617,7 +617,7 @@ const Index = () => {
           <div className="mt-4 rounded-2xl border border-primary/15 bg-primary/5 p-4 space-y-2.5">
             {[
               { icon: Check, text: "Defeitos de fabricação" },
-              { icon: Check, text: "7 dias para devolução" },
+              { icon: Check, text: "90 dias para devolução" },
               { icon: Check, text: "Suporte dedicado" },
             ].map(({ text }) => (
               <div key={text} className="flex items-center gap-2 text-[13px] font-semibold">
