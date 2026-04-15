@@ -434,14 +434,14 @@ export default function MotoSelector() {
                 {/* Price */}
                 <div className="text-center space-y-1">
                   <p className="text-[13px] text-muted-foreground line-through">De R$ 497,00</p>
-                  <p className="text-[42px] font-extrabold text-primary leading-none tracking-[-0.04em]">R$ 297</p>
-                  <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 24,75</span> sem juros</p>
-                  <p className="text-[11px] text-muted-foreground">Apenas R$ 0,81/dia — menos que um café</p>
+                  <p className="text-[42px] font-extrabold text-primary leading-none tracking-[-0.04em]">R$ 169,90</p>
+                  <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 14,16</span> sem juros</p>
+                  <p className="text-[11px] text-muted-foreground">Apenas R$ 0,47/dia — menos que um café</p>
                 </div>
 
                 {/* Savings */}
                 <div className="flex items-center justify-center gap-3">
-                  <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 200</span>
+                  <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 327</span>
                   <span className="rounded-full bg-accent/15 px-3 py-1 text-[12px] font-bold text-accent-foreground">Frete GRÁTIS</span>
                 </div>
 
