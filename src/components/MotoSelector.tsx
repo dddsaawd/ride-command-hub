@@ -434,7 +434,7 @@ export default function MotoSelector() {
                 {/* Price */}
                 <div className="text-center space-y-1">
                   <p className="text-[13px] text-muted-foreground line-through">De R$ 497,00</p>
-                  <p className="text-[42px] font-extrabold text-primary leading-none tracking-[-0.04em]">R$ 169,90</p>
+                  <p className="text-[42px] font-extrabold text-[#22C55E] leading-none tracking-[-0.04em]">R$ 169,90</p>
                   <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 14,16</span> sem juros</p>
                   <p className="text-[11px] text-muted-foreground">Apenas R$ 0,47/dia — menos que um café</p>
                 </div>
