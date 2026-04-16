@@ -171,6 +171,7 @@ const Index = () => {
 
   return (
     <main className="overflow-x-hidden bg-background text-foreground pb-[72px] md:pb-0">
+      <SocialProofToast />
 
       {/* ═══════ FIXED HEADER ═══════ */}
       <div
