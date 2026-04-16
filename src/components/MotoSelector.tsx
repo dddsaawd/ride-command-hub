@@ -194,20 +194,22 @@ const OTHER_BRANDS = Object.keys(MOTO_DATABASE).filter(b => !TOP_BRANDS.includes
 const BRAND_LIST = [...TOP_BRANDS, ...OTHER_BRANDS];
 
 /* Countdown timer hook */
-const useCountdown = (hours: number) => {
-  const end = useRef(Date.now() + hours * 3600_000);
-  const [left, setLeft] = useState(hours * 3600);
+const useCountdown = (minutes: number) => {
+  const end = useRef(Date.now() + minutes * 60_000);
+  const [left, setLeft] = useState(minutes * 60);
   useEffect(() => {
     const t = setInterval(() => {
       const diff = Math.max(0, Math.floor((end.current - Date.now()) / 1000));
       setLeft(diff);
+      if (diff <= 0) {
+        end.current = Date.now() + minutes * 60_000;
+      }
     }, 1000);
     return () => clearInterval(t);
-  }, []);
-  const h = String(Math.floor(left / 3600)).padStart(2, "0");
-  const m = String(Math.floor((left % 3600) / 60)).padStart(2, "0");
+  }, [minutes]);
+  const m = String(Math.floor(left / 60)).padStart(2, "0");
   const s = String(left % 60).padStart(2, "0");
-  return `${h}:${m}:${s}`;
+  return `${m}:${s}`;
 };
 
 export default function MotoSelector() {
@@ -217,7 +219,7 @@ export default function MotoSelector() {
   const [search, setSearch] = useState("");
   const [showBrands, setShowBrands] = useState(false);
   const offerRef = useRef<HTMLDivElement>(null);
-  const countdown = useCountdown(2);
+  const countdown = useCountdown(15);
 
   const totalModels = useMemo(() => Object.values(MOTO_DATABASE).reduce((s, m) => s + m.length, 0), []);
 
