@@ -197,19 +197,21 @@ const BRAND_LIST = [...TOP_BRANDS, ...OTHER_BRANDS];
 const useCountdown = (minutes: number) => {
   const end = useRef(Date.now() + minutes * 60_000);
   const [left, setLeft] = useState(minutes * 60);
+  const [expired, setExpired] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
       const diff = Math.max(0, Math.floor((end.current - Date.now()) / 1000));
       setLeft(diff);
       if (diff <= 0) {
-        end.current = Date.now() + minutes * 60_000;
+        setExpired(true);
+        clearInterval(t);
       }
     }, 1000);
     return () => clearInterval(t);
   }, [minutes]);
   const m = String(Math.floor(left / 60)).padStart(2, "0");
   const s = String(left % 60).padStart(2, "0");
-  return `${m}:${s}`;
+  return { display: `${m}:${s}`, expired };
 };
 
 export default function MotoSelector() {
