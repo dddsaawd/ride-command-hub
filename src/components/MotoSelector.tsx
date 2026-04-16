@@ -442,7 +442,7 @@ export default function MotoSelector() {
                 {/* Savings */}
                 <div className="flex items-center justify-center gap-3">
                   <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 327</span>
-                  <span className="rounded-full bg-accent/15 px-3 py-1 text-[12px] font-bold text-accent-foreground">Frete GRÁTIS</span>
+                  <span className="rounded-full bg-[#22C55E]/15 px-3 py-1 text-[12px] font-bold text-[#22C55E]">Frete GRÁTIS</span>
                 </div>
 
                 {/* What's included */}
