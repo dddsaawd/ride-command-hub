@@ -197,19 +197,21 @@ const BRAND_LIST = [...TOP_BRANDS, ...OTHER_BRANDS];
 const useCountdown = (minutes: number) => {
   const end = useRef(Date.now() + minutes * 60_000);
   const [left, setLeft] = useState(minutes * 60);
+  const [expired, setExpired] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
       const diff = Math.max(0, Math.floor((end.current - Date.now()) / 1000));
       setLeft(diff);
       if (diff <= 0) {
-        end.current = Date.now() + minutes * 60_000;
+        setExpired(true);
+        clearInterval(t);
       }
     }, 1000);
     return () => clearInterval(t);
   }, [minutes]);
   const m = String(Math.floor(left / 60)).padStart(2, "0");
   const s = String(left % 60).padStart(2, "0");
-  return `${m}:${s}`;
+  return { display: `${m}:${s}`, expired };
 };
 
 export default function MotoSelector() {
@@ -219,7 +221,7 @@ export default function MotoSelector() {
   const [search, setSearch] = useState("");
   const [showBrands, setShowBrands] = useState(false);
   const offerRef = useRef<HTMLDivElement>(null);
-  const countdown = useCountdown(15);
+  const { display: countdown, expired: offerExpired } = useCountdown(15);
 
   const totalModels = useMemo(() => Object.values(MOTO_DATABASE).reduce((s, m) => s + m.length, 0), []);
 
@@ -436,14 +438,27 @@ export default function MotoSelector() {
                 {/* Price */}
                 <div className="text-center space-y-1">
                   <p className="text-[13px] text-muted-foreground line-through">De R$ 497,00</p>
-                  <p className="text-[42px] font-extrabold text-[#22C55E] leading-none tracking-[-0.04em]">R$ 169,90</p>
-                  <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 14,16</span> sem juros</p>
-                  <p className="text-[11px] text-muted-foreground">Apenas R$ 0,47/dia — menos que um café</p>
+                  {offerExpired ? (
+                    <>
+                      <p className="text-[13px] text-destructive font-bold line-through">R$ 169,90 — ESGOTADO</p>
+                      <p className="text-[42px] font-extrabold text-[#22C55E] leading-none tracking-[-0.04em]">R$ 189,90</p>
+                      <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 15,83</span> sem juros</p>
+                      <p className="text-[11px] text-destructive font-bold">⚠️ Lote promocional esgotado — preço reajustado</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-[42px] font-extrabold text-[#22C55E] leading-none tracking-[-0.04em]">R$ 169,90</p>
+                      <p className="text-[14px] text-foreground font-semibold">ou 12× de <span className="text-primary font-bold">R$ 14,16</span> sem juros</p>
+                      <p className="text-[11px] text-muted-foreground">Apenas R$ 0,47/dia — menos que um café</p>
+                    </>
+                  )}
                 </div>
 
                 {/* Savings */}
                 <div className="flex items-center justify-center gap-3">
-                  <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">Economia de R$ 327</span>
+                  <span className="rounded-full bg-primary/15 px-3 py-1 text-[12px] font-bold text-primary">
+                    {offerExpired ? "Economia de R$ 307" : "Economia de R$ 327"}
+                  </span>
                   <span className="rounded-full bg-[#22C55E]/15 px-3 py-1 text-[12px] font-bold text-[#22C55E]">Frete GRÁTIS</span>
                 </div>
 
@@ -474,15 +489,24 @@ export default function MotoSelector() {
                 {/* CTA */}
                 <Button asChild size="lg" className="h-[56px] w-full rounded-full text-[15px] font-extrabold shadow-cta">
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                    COMPRAR AGORA COM 40% OFF <ArrowRight className="h-5 w-5" />
+                    {offerExpired ? "GARANTIR ANTES DO PRÓXIMO REAJUSTE" : "COMPRAR AGORA COM 40% OFF"} <ArrowRight className="h-5 w-5" />
                   </a>
                 </Button>
 
                 {/* Urgency */}
-                <div className="rounded-xl bg-destructive/10 p-3 text-center space-y-1">
-                  <p className="text-[12px] font-bold text-destructive">⚠️ Restam poucas unidades neste lote</p>
-                  <p className="text-2xl font-bold tracking-[0.1em] text-destructive font-display">{countdown}</p>
-                  <p className="text-[10px] text-destructive/60 uppercase font-bold tracking-[0.15em]">para esta oferta expirar</p>
+                <div className={`rounded-xl p-3 text-center space-y-1 ${offerExpired ? "bg-destructive/20 border border-destructive/30" : "bg-destructive/10"}`}>
+                  {offerExpired ? (
+                    <>
+                      <p className="text-[13px] font-extrabold text-destructive">🚨 LOTE PROMOCIONAL ESGOTADO</p>
+                      <p className="text-[11px] text-destructive/80 font-semibold">Você perdeu R$ 20 de desconto. Garanta agora antes do próximo reajuste!</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-[12px] font-bold text-destructive">⚠️ Restam poucas unidades neste lote</p>
+                      <p className="text-2xl font-bold tracking-[0.1em] text-destructive font-display">{countdown}</p>
+                      <p className="text-[10px] text-destructive/60 uppercase font-bold tracking-[0.15em]">para esta oferta expirar</p>
+                    </>
+                  )}
                 </div>
 
                 {/* Trust signals */}
