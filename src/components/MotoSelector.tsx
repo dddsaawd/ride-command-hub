@@ -450,7 +450,7 @@ export default function MotoSelector() {
                   <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary">O que você leva:</p>
                   {[
                     "Painel MotoPlay Pro 7\" HD",
-                    "Suporte universal para qualquer moto",
+                    "Suporte compatível com todos modelos de moto",
                     "Kit completo de instalação",
                     "CarPlay + Android Auto sem fio",
                     "Garantia de satisfação 7 dias",
