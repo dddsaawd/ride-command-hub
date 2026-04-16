@@ -103,10 +103,12 @@ const faqs = [
 ];
 
 const testimonials = [
-  { name: "Carlos M.", role: "Entregador iFood", quote: "Melhor investimento que fiz pra trabalhar. Não perco mais corrida e faço mais entregas no dia. A tela é nítida até no sol forte." },
-  { name: "Rafael S.", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível." },
-  { name: "Amanda L.", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença." },
-  { name: "Lucas F.", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim." },
+  { name: "Carlos M.", city: "São Paulo, SP", role: "Entregador iFood", quote: "Melhor investimento que fiz pra trabalhar. Não perco mais corrida e faço mais entregas no dia. A tela é nítida até no sol forte.", img: depoimento1, moto: "Yamaha Fazer 250" },
+  { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160" },
+  { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300" },
+  { name: "Lucas F.", city: "Curitiba, PR", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim.", img: depoimento5, moto: "BMW G 310 GS" },
+  { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda CG 150 Titan" },
+  { name: "Thiago P.", city: "Goiânia, GO", role: "Motoboy iFood", quote: "A tela de configuração é completa. Ajustei brilho, idioma, tudo. Qualidade surpreendente pelo preço.", img: depoimento2, moto: "Yamaha Factor 150" },
 ];
 
 
