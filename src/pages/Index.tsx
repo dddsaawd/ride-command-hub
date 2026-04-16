@@ -581,17 +581,28 @@ const Index = () => {
 
           {/* Testimonial cards */}
           <div className="mt-6 space-y-4">
-            {testimonials.map((t, idx) => (
+            {testimonials.map((t) => (
               <div key={t.name} className="rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
-                {/* Real product photo */}
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={t.img} 
-                    alt={`MotoPlay Pro instalado na moto de ${t.name}`} 
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8">
+                {/* Media — photo or video */}
+                <div className="relative overflow-hidden">
+                  {t.video ? (
+                    <video
+                      className="w-full aspect-[9/16] max-h-[420px] object-cover bg-black"
+                      controls
+                      playsInline
+                      preload="metadata"
+                    >
+                      <source src={t.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img 
+                      src={t.img} 
+                      alt={`MotoPlay Pro instalado na moto de ${t.name}`} 
+                      className="w-full aspect-[4/3] object-cover"
+                      loading="lazy"
+                    />
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8 pointer-events-none">
                     <span className="inline-flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold text-primary-foreground">
                       <Check className="h-3 w-3" /> Compra verificada
                     </span>
@@ -618,42 +629,6 @@ const Index = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Video testimonials */}
-          <div className="mt-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary text-center mb-1">Depoimentos em Vídeo</p>
-            <p className="text-center text-[14px] font-bold mb-4">Veja clientes reais usando o MotoPlay Pro</p>
-            <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
-              {[
-                { src: "/videos/depoimento-video-1.mp4", name: "Marcos A.", city: "São Paulo, SP" },
-                { src: "/videos/depoimento-video-2.mp4", name: "Felipe T.", city: "Campinas, SP" },
-                { src: "/videos/depoimento-video-3.mp4", name: "Bruno L.", city: "Rio de Janeiro, RJ" },
-                { src: "/videos/depoimento-video-4.mp4", name: "Gustavo R.", city: "Belo Horizonte, MG" },
-              ].map((v) => (
-                <div key={v.name} className="shrink-0 w-[240px] snap-center rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
-                  <div className="relative">
-                    <video
-                      className="w-full aspect-[9/16] max-h-[360px] object-cover bg-black"
-                      controls
-                      playsInline
-                      preload="metadata"
-                    >
-                      <source src={v.src} type="video/mp4" />
-                    </video>
-                  </div>
-                  <div className="p-3 flex items-center gap-2">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-[12px] font-extrabold">
-                      {v.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-[12px] font-bold">{v.name}</p>
-                      <p className="text-[10px] text-muted-foreground">{v.city}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Bottom CTA */}
