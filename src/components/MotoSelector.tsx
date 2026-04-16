@@ -489,7 +489,7 @@ export default function MotoSelector() {
                 {/* CTA */}
                 <Button asChild size="lg" className="h-[56px] w-full rounded-full text-[15px] font-extrabold shadow-cta">
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                    COMPRAR AGORA COM 40% OFF <ArrowRight className="h-5 w-5" />
+                    {offerExpired ? "GARANTIR ANTES DO PRÓXIMO REAJUSTE" : "COMPRAR AGORA COM 40% OFF"} <ArrowRight className="h-5 w-5" />
                   </a>
                 </Button>
 
