@@ -453,7 +453,7 @@ export default function MotoSelector() {
                     "Suporte compatível com sua moto",
                     "Kit completo de instalação",
                     "CarPlay + Android Auto sem fio",
-                    "Garantia de satisfação 7 dias",
+                    "Garantia de satisfação 90 dias",
                     "Suporte técnico por WhatsApp",
                   ].map((t) => (
                     <div key={t} className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
