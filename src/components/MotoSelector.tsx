@@ -489,7 +489,7 @@ export default function MotoSelector() {
                 <div className="grid grid-cols-2 gap-2">
                   {[
                     { icon: Lock, text: "Compra 100% segura" },
-                    { icon: CreditCard, text: "Pix, cartão ou boleto" },
+                    { icon: CreditCard, text: "Pix ou cartão" },
                     { icon: Truck, text: "Entrega para todo Brasil" },
                     { icon: Shield, text: "7 dias de garantia" },
                   ].map(({ icon: Icon, text }) => (
