@@ -638,7 +638,7 @@ const Index = () => {
                       <p className="text-[10px] text-muted-foreground truncate">{t.role} • {t.city}</p>
                     </div>
                   </div>
-                  <span className="mt-1.5 inline-block rounded-lg bg-secondary px-2 py-0.5 text-[9px] font-bold text-muted-foreground">{t.moto}</span>
+                  
                 </div>
               </div>
             ))}
