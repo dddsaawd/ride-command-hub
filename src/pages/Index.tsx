@@ -102,12 +102,16 @@ const faqs = [
   { q: "Qual o prazo de entrega?", a: "Envio rápido para todo o Brasil com frete grátis. Prazo médio de 3-6 dias." },
 ];
 
-const testimonials = [
+const testimonials: { name: string; city: string; role: string; quote: string; img?: string; video?: string; moto: string }[] = [
   { name: "Carlos M.", city: "São Paulo, SP", role: "Entregador iFood", quote: "Melhor investimento que fiz pra trabalhar. Não perco mais corrida e faço mais entregas no dia. A tela é nítida até no sol forte.", img: depoimento1, moto: "Yamaha Fazer 250" },
-  { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160" },
-  { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300" },
+  { name: "Marcos A.", city: "Guarulhos, SP", role: "Motoboy Rappi", quote: "Antes eu parava no semáforo pra ver o celular. Agora aceito corrida sem tirar a mão do guidão. Mudou minha rotina.", video: "/videos/depoimento-video-1.mp4", moto: "Honda CG 160 Fan" },
+  { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160 Titan" },
+  { name: "Felipe T.", city: "Campinas, SP", role: "Entregador iFood", quote: "Já quebrei 3 celulares no suporte. Com o MotoPlay, meu celular fica no bolso o dia todo. Sem estresse.", video: "/videos/depoimento-video-2.mp4", moto: "Yamaha Factor 150" },
+  { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300F" },
+  { name: "Bruno L.", city: "Brasília, DF", role: "Motoboy 99", quote: "Trabalho de madrugada e a tela ilumina certinho. GPS funcionando, música tocando, corrida aceitando. Perfeito.", video: "/videos/depoimento-video-3.mp4", moto: "Honda CG 150 Titan" },
   { name: "Lucas F.", city: "Curitiba, PR", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim.", img: depoimento5, moto: "BMW G 310 GS" },
-  { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda CG 150 Titan" },
+  { name: "Gustavo R.", city: "Salvador, BA", role: "Entregador Uber Eats", quote: "Chove quase todo dia aqui e o MotoPlay aguenta tudo. Tela funcionando normal na chuva. Celular zerado no bolso.", video: "/videos/depoimento-video-4.mp4", moto: "Kawasaki Ninja 300" },
+  { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda NXR 160 Bros" },
   { name: "Thiago P.", city: "Goiânia, GO", role: "Motoboy iFood", quote: "A tela de configuração é completa. Ajustei brilho, idioma, tudo. Qualidade surpreendente pelo preço.", img: depoimento2, moto: "Yamaha Factor 150" },
 ];
 
