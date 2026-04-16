@@ -16,25 +16,25 @@ const buyers = [
   { name: "João", city: "São Paulo", avatar: avatar1 },
   { name: "Carlos", city: "Rio de Janeiro", avatar: avatar4 },
   { name: "Marcos", city: "Belo Horizonte", avatar: avatar5 },
-  { name: "Lucas", city: "Curitiba", avatar: avatar7 },
+  { name: "Bianca", city: "Curitiba", avatar: avatar7 },
   { name: "Pedro", city: "Goiânia", avatar: avatar8 },
   { name: "Rafael", city: "Salvador", avatar: avatar9 },
-  { name: "André", city: "Fortaleza", avatar: avatar10 },
+  { name: "Lucas", city: "Fortaleza", avatar: avatar10 },
   { name: "Thiago", city: "Recife", avatar: avatar11 },
-  { name: "Felipe", city: "Brasília", avatar: avatar12 },
+  { name: "Larissa", city: "Brasília", avatar: avatar12 },
   { name: "Diego", city: "Porto Alegre", avatar: avatar4 },
   { name: "Amanda", city: "Manaus", avatar: avatar3 },
   { name: "Rodrigo", city: "Belém", avatar: avatar5 },
   { name: "Leandro", city: "Campinas", avatar: avatar6 },
   { name: "Juliana", city: "São Luís", avatar: avatar2 },
-  { name: "Matheus", city: "Cuiabá", avatar: avatar7 },
+  { name: "Matheus", city: "Cuiabá", avatar: avatar8 },
   { name: "Camila", city: "Vitória", avatar: avatar3 },
-  { name: "Daniel", city: "Florianópolis", avatar: avatar8 },
+  { name: "Daniel", city: "Florianópolis", avatar: avatar10 },
   { name: "Fernanda", city: "Natal", avatar: avatar2 },
   { name: "Bruno", city: "Aracaju", avatar: avatar9 },
-  { name: "Gustavo", city: "Teresina", avatar: avatar10 },
-  { name: "Renata", city: "Maceió", avatar: avatar11 },
-  { name: "Vinícius", city: "João Pessoa", avatar: avatar12 },
+  { name: "Gustavo", city: "Teresina", avatar: avatar4 },
+  { name: "Patrícia", city: "Maceió", avatar: avatar7 },
+  { name: "Vinícius", city: "João Pessoa", avatar: avatar11 },
 ];
 
 const timeLabels = ["Há instantes", "Há 1 min", "Há 2 min", "Há 3 min", "Há 5 min"];
@@ -43,9 +43,10 @@ const SocialProofToast = () => {
   const indexRef = useRef(Math.floor(Math.random() * buyers.length));
   const [visible, setVisible] = useState(false);
   const [data, setData] = useState({ name: "", city: "", avatar: "", time: "" });
+  const hideTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
+    let intervalId: ReturnType<typeof setTimeout>;
 
     const show = () => {
       const buyer = buyers[indexRef.current % buyers.length];
@@ -53,17 +54,26 @@ const SocialProofToast = () => {
       indexRef.current++;
       setData({ name: buyer.name, city: buyer.city, avatar: buyer.avatar, time });
       setVisible(true);
-      setTimeout(() => setVisible(false), 5000);
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = setTimeout(() => setVisible(false), 5000);
+    };
+
+    const scheduleNext = () => {
+      intervalId = setTimeout(() => {
+        show();
+        scheduleNext();
+      }, 35000 + Math.random() * 20000);
     };
 
     const initialDelay = setTimeout(() => {
       show();
-      interval = setInterval(show, 35000 + Math.random() * 20000);
-    }, 8000 + Math.random() * 5000);
+      scheduleNext();
+    }, 10000 + Math.random() * 5000);
 
     return () => {
       clearTimeout(initialDelay);
-      clearInterval(interval);
+      clearTimeout(intervalId);
+      clearTimeout(hideTimeoutRef.current);
     };
   }, []);
 
