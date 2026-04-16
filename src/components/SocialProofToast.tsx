@@ -1,90 +1,108 @@
 import { useEffect, useRef, useState } from "react";
 
 const buyers = [
-  { name: "João", city: "São Paulo, SP" },
-  { name: "Carlos", city: "Rio de Janeiro, RJ" },
-  { name: "Marcos", city: "Belo Horizonte, MG" },
-  { name: "Lucas", city: "Curitiba, PR" },
-  { name: "Pedro", city: "Goiânia, GO" },
-  { name: "Rafael", city: "Salvador, BA" },
-  { name: "André", city: "Fortaleza, CE" },
-  { name: "Thiago", city: "Recife, PE" },
-  { name: "Felipe", city: "Brasília, DF" },
-  { name: "Diego", city: "Porto Alegre, RS" },
-  { name: "Gustavo", city: "Manaus, AM" },
-  { name: "Rodrigo", city: "Belém, PA" },
-  { name: "Leandro", city: "Campinas, SP" },
-  { name: "Bruno", city: "São Luís, MA" },
-  { name: "Matheus", city: "Cuiabá, MT" },
-  { name: "Vinícius", city: "Vitória, ES" },
-  { name: "Daniel", city: "Florianópolis, SC" },
-  { name: "Eduardo", city: "Natal, RN" },
+  { name: "João", city: "São Paulo" },
+  { name: "Carlos", city: "Rio de Janeiro" },
+  { name: "Marcos", city: "Belo Horizonte" },
+  { name: "Lucas", city: "Curitiba" },
+  { name: "Pedro", city: "Goiânia" },
+  { name: "Rafael", city: "Salvador" },
+  { name: "André", city: "Fortaleza" },
+  { name: "Thiago", city: "Recife" },
+  { name: "Felipe", city: "Brasília" },
+  { name: "Diego", city: "Porto Alegre" },
+  { name: "Gustavo", city: "Manaus" },
+  { name: "Rodrigo", city: "Belém" },
+  { name: "Leandro", city: "Campinas" },
+  { name: "Bruno", city: "São Luís" },
+  { name: "Matheus", city: "Cuiabá" },
+  { name: "Vinícius", city: "Vitória" },
+  { name: "Daniel", city: "Florianópolis" },
+  { name: "Eduardo", city: "Natal" },
 ];
 
-const timeAgo = () => {
-  const minutes = Math.floor(Math.random() * 12) + 1;
-  return `há ${minutes} min`;
-};
+const avatars = [
+  "https://randomuser.me/api/portraits/men/32.jpg",
+  "https://randomuser.me/api/portraits/men/45.jpg",
+  "https://randomuser.me/api/portraits/men/22.jpg",
+  "https://randomuser.me/api/portraits/men/55.jpg",
+  "https://randomuser.me/api/portraits/men/67.jpg",
+  "https://randomuser.me/api/portraits/men/12.jpg",
+  "https://randomuser.me/api/portraits/men/76.jpg",
+  "https://randomuser.me/api/portraits/men/88.jpg",
+  "https://randomuser.me/api/portraits/men/41.jpg",
+  "https://randomuser.me/api/portraits/men/29.jpg",
+];
+
+const timeLabels = ["Há instantes", "Há 1 min", "Há 2 min", "Há 3 min", "Há 5 min"];
 
 const SocialProofToast = () => {
   const indexRef = useRef(Math.floor(Math.random() * buyers.length));
   const [visible, setVisible] = useState(false);
-  const [data, setData] = useState({ name: "", city: "", time: "" });
+  const [data, setData] = useState({ name: "", city: "", avatar: "", time: "" });
 
   useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+
     const show = () => {
       const buyer = buyers[indexRef.current % buyers.length];
+      const avatar = avatars[indexRef.current % avatars.length];
+      const time = timeLabels[Math.floor(Math.random() * timeLabels.length)];
       indexRef.current++;
-      setData({ name: buyer.name, city: buyer.city, time: timeAgo() });
+      setData({ name: buyer.name, city: buyer.city, avatar, time });
       setVisible(true);
-      setTimeout(() => setVisible(false), 4500);
+      setTimeout(() => setVisible(false), 5000);
     };
 
     const initialDelay = setTimeout(() => {
       show();
-      const interval = setInterval(show, 18000 + Math.random() * 12000);
-      return () => clearInterval(interval);
+      interval = setInterval(show, 18000 + Math.random() * 12000);
     }, 8000 + Math.random() * 5000);
 
-    return () => clearTimeout(initialDelay);
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(interval);
+    };
   }, []);
+
+  const dismiss = () => setVisible(false);
 
   return (
     <div
-      className="fixed bottom-20 left-3 z-[9999] transition-all duration-500 ease-out pointer-events-none"
+      className="fixed bottom-20 left-3 right-3 z-[9999] transition-all duration-500 ease-out"
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        pointerEvents: visible ? "auto" : "none",
       }}
     >
-      <div className="relative bg-[#1a1a1a] rounded-2xl rounded-bl-md shadow-2xl px-4 py-3 flex items-center gap-3 max-w-[320px] border border-[#333]">
-        {/* Triângulo do balão */}
-        <div
-          className="absolute -bottom-2 left-4 w-0 h-0"
-          style={{
-            borderLeft: "8px solid transparent",
-            borderRight: "8px solid transparent",
-            borderTop: "8px solid #1a1a1a",
-          }}
+      <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.12)] px-4 py-3 flex items-center gap-3 max-w-[380px] mx-auto">
+        {/* Avatar */}
+        <img
+          src={data.avatar}
+          alt=""
+          className="w-11 h-11 rounded-full object-cover flex-shrink-0 border-2 border-gray-100"
         />
-        {/* Ícone verde pulsante */}
-        <div className="relative flex-shrink-0">
-          <div className="w-9 h-9 rounded-full bg-[#22C55E]/20 flex items-center justify-center">
-            <span className="text-lg">🛒</span>
-          </div>
-          <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#22C55E] rounded-full animate-ping" />
-          <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#22C55E] rounded-full" />
-        </div>
-        {/* Texto */}
-        <div className="flex flex-col min-w-0">
-          <span className="text-white text-[13px] font-semibold leading-tight truncate">
+        {/* Text */}
+        <div className="flex flex-col min-w-0 flex-1">
+          <span className="text-[#1a1a1a] text-[14px] font-bold leading-tight">
             {data.name} de {data.city}
           </span>
-          <span className="text-[#22C55E] text-[12px] font-medium">
-            acabou de comprar ✅
+          <span className="text-[#444] text-[13px]">
+            comprou o <span className="font-bold">MotoPlay Pro</span>
           </span>
-          <span className="text-gray-500 text-[11px]">{data.time}</span>
+          <span className="text-[#22C55E] text-[12px] font-medium">{data.time}</span>
         </div>
+        {/* Close */}
+        <button
+          onClick={dismiss}
+          className="text-gray-400 hover:text-gray-600 flex-shrink-0 p-1"
+          aria-label="Fechar"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        </button>
       </div>
     </div>
   );
