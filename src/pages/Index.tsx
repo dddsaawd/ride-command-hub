@@ -579,15 +579,15 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Testimonial cards */}
-          <div className="mt-6 space-y-4">
+          {/* Testimonial carousel */}
+          <div className="mt-6 flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
             {testimonials.map((t) => (
-              <div key={t.name} className="rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
+              <div key={t.name} className="shrink-0 w-[260px] snap-center rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
                 {/* Media — photo or video */}
                 <div className="relative overflow-hidden">
                   {t.video ? (
                     <video
-                      className="w-full aspect-[9/16] max-h-[420px] object-cover bg-black"
+                      className="w-full aspect-[9/16] max-h-[360px] object-cover bg-black"
                       controls
                       playsInline
                       preload="metadata"
@@ -597,8 +597,8 @@ const Index = () => {
                   ) : (
                     <img 
                       src={t.img} 
-                      alt={`MotoPlay Pro instalado na moto de ${t.name}`} 
-                      className="w-full aspect-[4/3] object-cover"
+                      alt={`MotoPlay Pro - ${t.name}`} 
+                      className="w-full aspect-[9/16] max-h-[360px] object-cover"
                       loading="lazy"
                     />
                   )}
@@ -610,22 +610,22 @@ const Index = () => {
                 </div>
 
                 {/* Review content */}
-                <div className="p-4">
-                  <div className="flex gap-0.5 text-primary mb-2">
-                    {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-primary" />)}
+                <div className="p-3">
+                  <div className="flex gap-0.5 text-primary mb-1.5">
+                    {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3 w-3 fill-primary" />)}
                   </div>
-                  <p className="text-[13px] leading-relaxed font-medium">"{t.quote}"</p>
+                  <p className="text-[12px] leading-relaxed font-medium line-clamp-3">"{t.quote}"</p>
                   
-                  <div className="mt-3 flex items-center gap-3 pt-3 border-t border-border/60">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-[14px] font-extrabold">
+                  <div className="mt-2 flex items-center gap-2 pt-2 border-t border-border/60">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-[12px] font-extrabold">
                       {t.name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[13px] font-bold">{t.name}</p>
-                      <p className="text-[11px] text-muted-foreground">{t.role} • {t.city}</p>
+                      <p className="text-[12px] font-bold">{t.name}</p>
+                      <p className="text-[10px] text-muted-foreground truncate">{t.role} • {t.city}</p>
                     </div>
-                    <span className="shrink-0 rounded-lg bg-secondary px-2 py-1 text-[9px] font-bold text-muted-foreground">{t.moto}</span>
                   </div>
+                  <span className="mt-1.5 inline-block rounded-lg bg-secondary px-2 py-0.5 text-[9px] font-bold text-muted-foreground">{t.moto}</span>
                 </div>
               </div>
             ))}
