@@ -39,6 +39,7 @@ import {
   CreditCard,
 } from "lucide-react";
 
+import SocialProofToast from "@/components/SocialProofToast";
 import logoMotoplay from "@/assets/logo.png";
 import logoDark from "@/assets/logo-dark.png";
 import heroImg from "@/assets/motoplay-hero.jpg";
