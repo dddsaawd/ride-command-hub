@@ -39,6 +39,7 @@ import {
   CreditCard,
 } from "lucide-react";
 
+import SocialProofToast from "@/components/SocialProofToast";
 import logoMotoplay from "@/assets/logo.png";
 import logoDark from "@/assets/logo-dark.png";
 import heroImg from "@/assets/motoplay-hero.jpg";
@@ -171,6 +172,7 @@ const Index = () => {
 
   return (
     <main className="overflow-x-hidden bg-background text-foreground pb-[72px] md:pb-0">
+      <SocialProofToast />
 
       {/* ═══════ FIXED HEADER ═══════ */}
       <div
