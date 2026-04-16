@@ -127,6 +127,9 @@ const testimonials: { name: string; city: string; role: string; quote: string; i
   { name: "Thiago P.", city: "Goiânia, GO", role: "Motoboy iFood", quote: "A tela de configuração é completa. Ajustei brilho, idioma, tudo. Qualidade surpreendente pelo preço.", img: depoimento2, moto: "Yamaha Factor 150" },
   { name: "Vinícius K.", city: "Joinville, SC", role: "Entregador Uber", quote: "Moto com painel inteligente por menos de 200 reais. Não existe nada parecido no mercado. Recomendo demais.", img: depoimento10, moto: "Kawasaki Z400" },
   { name: "Anderson F.", city: "Belém, PA", role: "Motoboy iFood", quote: "Calor de 40 graus e chuva forte todo dia. MotoPlay não falhou nenhuma vez. IP67 é real.", video: "/videos/depoimento-video-9.mp4", moto: "Honda CG 160 Start" },
+  { name: "Renato G.", city: "Cuiabá, MT", role: "Entregador Rappi", quote: "Conectou no Android Auto na hora. Mapa, música, tudo sem fio. Parece que a moto veio de fábrica assim.", video: "/videos/depoimento-video-10.mp4", moto: "Honda CB 250F Twister" },
+  { name: "Marcelo D.", city: "Curitiba, PR", role: "Motociclista urbano", quote: "Royal Enfield com MotoPlay ficou absurda. Android Auto com Radiohead tocando e Waze aberto. Melhor compra do ano.", img: depoimento11, moto: "Royal Enfield Meteor 350" },
+  { name: "Fábio J.", city: "Vitória, ES", role: "Motoboy Uber Eats", quote: "Tela grande, responsiva, brilho forte. Vejo tudo mesmo no sol do meio-dia. Valeu cada centavo.", video: "/videos/depoimento-video-11.mp4", moto: "Yamaha Lander 250" },
 ];
 
 
