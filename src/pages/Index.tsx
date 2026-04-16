@@ -64,6 +64,7 @@ import depoimento7 from "@/assets/depoimento-7.webp";
 import depoimento8 from "@/assets/depoimento-8.webp";
 import depoimento9 from "@/assets/depoimento-9.webp";
 import depoimento10 from "@/assets/depoimento-10.webp";
+import depoimento11 from "@/assets/depoimento-11.webp";
 
 import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
 import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
