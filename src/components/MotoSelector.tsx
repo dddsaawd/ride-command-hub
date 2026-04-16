@@ -449,7 +449,7 @@ export default function MotoSelector() {
                 <div className="rounded-xl bg-secondary/50 p-4 space-y-2">
                   <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary">O que você leva:</p>
                   {[
-                    "Painel MotoPlay Pro 7\" HD",
+                    "Painel MotoPlay Pro 7\"",
                     "Suporte compatível com sua moto",
                     "Kit completo de instalação",
                     "CarPlay + Android Auto sem fio",
