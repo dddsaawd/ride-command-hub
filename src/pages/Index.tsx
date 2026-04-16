@@ -484,25 +484,6 @@ const Index = () => {
             <img src={produtoProvaDagua} alt="MotoPlay Pro à prova d'água IP67" className="w-full object-cover" loading="lazy" />
           </div>
 
-          {/* Specs table */}
-          <div className="mt-5 rounded-2xl border border-surface-foreground/10 bg-surface-foreground/5 overflow-hidden">
-            <p className="px-4 pt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Especificações</p>
-            {[
-              ["Tela", '7" IPS HD touchscreen'],
-              ["Conectividade", "CarPlay + Android Auto wireless"],
-              ["Resistência", "IP67 — chuva, poeira, sol"],
-              ["Alimentação", "12V direto na bateria"],
-              ["Bluetooth", "5.0 — capacete, intercom, fones"],
-              ["Instalação", "Universal — qualquer guidão"],
-              ["Material", "ABS reforçado + tela temperada"],
-              ["Acessórios", "Kit completo incluso"],
-            ].map(([label, val], i) => (
-              <div key={label} className={`flex justify-between px-4 py-2.5 text-[12px] ${i % 2 === 0 ? "" : "bg-surface-foreground/[0.03]"}`}>
-                <span className="font-bold text-surface-foreground/80">{label}</span>
-                <span className="text-surface-foreground/60 text-right">{val}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
