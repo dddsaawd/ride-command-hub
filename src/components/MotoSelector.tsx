@@ -221,6 +221,7 @@ export default function MotoSelector() {
   const [search, setSearch] = useState("");
   const [showBrands, setShowBrands] = useState(false);
   const offerRef = useRef<HTMLDivElement>(null);
+  const viewersCount = useRef(Math.floor(Math.random() * 8) + 27);
   const { display: countdown, expired: offerExpired } = useCountdown(15);
 
   const totalModels = useMemo(() => Object.values(MOTO_DATABASE).reduce((s, m) => s + m.length, 0), []);
@@ -497,8 +498,15 @@ export default function MotoSelector() {
                 <div className={`rounded-xl p-3 text-center space-y-1 ${offerExpired ? "bg-destructive/20 border border-destructive/30" : "bg-destructive/10"}`}>
                   {offerExpired ? (
                     <>
-                      <p className="text-[13px] font-extrabold text-destructive">🚨 LOTE PROMOCIONAL ESGOTADO</p>
-                      <p className="text-[11px] text-destructive/80 font-semibold">Você perdeu R$ 20 de desconto. Garanta agora antes do próximo reajuste!</p>
+                      <p className="text-[13px] font-extrabold text-destructive animate-pulse">🔴 ÚLTIMO LOTE</p>
+                      <div className="flex items-center justify-center gap-1.5 mt-1">
+                        <span className="relative flex h-2.5 w-2.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22C55E]"></span>
+                        </span>
+                        <p className="text-[12px] text-foreground/80 font-bold">{viewersCount.current} pessoas vendo agora</p>
+                      </div>
+                      <p className="text-[10px] text-destructive/70 font-semibold mt-1">Preço pode subir a qualquer momento</p>
                     </>
                   ) : (
                     <>
