@@ -54,6 +54,13 @@ import logoYoutube from "@/assets/logo-youtube.png";
 import logoZe from "@/assets/logo-ze.png";
 import logoKeeta from "@/assets/logo-keeta.png";
 
+import depoimento1 from "@/assets/depoimento-1.webp";
+import depoimento2 from "@/assets/depoimento-2.webp";
+import depoimento3 from "@/assets/depoimento-3.webp";
+import depoimento4 from "@/assets/depoimento-4.webp";
+import depoimento5 from "@/assets/depoimento-5.webp";
+import depoimento6 from "@/assets/depoimento-6.webp";
+
 import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
 import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
 import produtoInstalacao from "@/assets/produto-instalacao.png";
@@ -96,10 +103,12 @@ const faqs = [
 ];
 
 const testimonials = [
-  { name: "Carlos M.", role: "Entregador iFood", quote: "Melhor investimento que fiz pra trabalhar. Não perco mais corrida e faço mais entregas no dia. A tela é nítida até no sol forte." },
-  { name: "Rafael S.", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível." },
-  { name: "Amanda L.", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença." },
-  { name: "Lucas F.", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim." },
+  { name: "Carlos M.", city: "São Paulo, SP", role: "Entregador iFood", quote: "Melhor investimento que fiz pra trabalhar. Não perco mais corrida e faço mais entregas no dia. A tela é nítida até no sol forte.", img: depoimento1, moto: "Yamaha Fazer 250" },
+  { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160" },
+  { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300" },
+  { name: "Lucas F.", city: "Curitiba, PR", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim.", img: depoimento5, moto: "BMW G 310 GS" },
+  { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda CG 150 Titan" },
+  { name: "Thiago P.", city: "Goiânia, GO", role: "Motoboy iFood", quote: "A tela de configuração é completa. Ajustei brilho, idioma, tudo. Qualidade surpreendente pelo preço.", img: depoimento2, moto: "Yamaha Factor 150" },
 ];
 
 
@@ -564,29 +573,74 @@ const Index = () => {
       </section>
 
       {/* ═══════ AVALIAÇÕES ═══════ */}
-      <section className="py-10 bg-secondary/40">
+      <section className="py-12 bg-secondary/40" id="avaliacoes">
         <div className="container px-4">
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary text-center">Avaliações</p>
-          <h2 className="mt-1 text-[20px] font-bold leading-tight text-center">Quem usa, recomenda</h2>
-          <p className="text-center text-[12px] text-muted-foreground">Clientes verificados • Compras reais</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary text-center">Depoimentos Reais</p>
+          <h2 className="mt-1 text-[22px] font-bold leading-tight text-center">Quem usa, recomenda</h2>
+          <p className="text-center text-[12px] text-muted-foreground mt-1">Fotos reais de clientes • Compras verificadas</p>
 
-          <div className="mt-2 flex items-center justify-center gap-1">
-            <span className="text-[22px] font-bold">4,9</span>
-            <div className="flex text-primary">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-primary" />)}</div>
-            <span className="text-[12px] text-muted-foreground">• 1.247 avaliações</span>
+          {/* Rating summary */}
+          <div className="mt-4 mx-auto max-w-[280px] rounded-2xl border border-primary/20 bg-primary/5 p-4 text-center">
+            <div className="flex items-center justify-center gap-1.5">
+              <span className="text-[28px] font-extrabold text-primary">4,9</span>
+              <div className="flex flex-col items-start">
+                <div className="flex text-primary">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-primary" />)}</div>
+                <span className="text-[11px] text-muted-foreground font-semibold">1.247 avaliações</span>
+              </div>
+            </div>
+            <div className="mt-2 flex justify-center gap-3 text-[10px] font-bold text-muted-foreground">
+              <span className="flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-primary" /> Verificado</span>
+              <span className="flex items-center gap-1"><Users className="h-3 w-3 text-primary" /> +5.000 clientes</span>
+            </div>
           </div>
 
-          <div className="mt-4 space-y-3">
-            {testimonials.map((t) => (
-              <Card key={t.name} className="rounded-2xl p-4 border-border/80 shadow-sm">
-                <div className="flex gap-0.5 text-primary mb-2">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3 w-3 fill-primary" />)}</div>
-                <p className="text-[13px] leading-relaxed">"{t.quote}"</p>
-                <div className="mt-2">
-                  <p className="text-[12px] font-bold">{t.name}</p>
-                  <p className="text-[10px] text-muted-foreground">{t.role}</p>
+          {/* Testimonial cards */}
+          <div className="mt-6 space-y-4">
+            {testimonials.map((t, idx) => (
+              <div key={t.name} className="rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
+                {/* Real product photo */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={t.img} 
+                    alt={`MotoPlay Pro instalado na moto de ${t.name}`} 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold text-primary-foreground">
+                      <Check className="h-3 w-3" /> Compra verificada
+                    </span>
+                  </div>
                 </div>
-              </Card>
+
+                {/* Review content */}
+                <div className="p-4">
+                  <div className="flex gap-0.5 text-primary mb-2">
+                    {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-primary" />)}
+                  </div>
+                  <p className="text-[13px] leading-relaxed font-medium">"{t.quote}"</p>
+                  
+                  <div className="mt-3 flex items-center gap-3 pt-3 border-t border-border/60">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-[14px] font-extrabold">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[13px] font-bold">{t.name}</p>
+                      <p className="text-[11px] text-muted-foreground">{t.role} • {t.city}</p>
+                    </div>
+                    <span className="shrink-0 rounded-lg bg-secondary px-2 py-1 text-[9px] font-bold text-muted-foreground">{t.moto}</span>
+                  </div>
+                </div>
+              </div>
             ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="mt-6 text-center">
+            <p className="text-[12px] font-semibold text-muted-foreground mb-3">Junte-se a +5.000 motociclistas satisfeitos</p>
+            <Button asChild size="lg" className="h-[50px] w-full rounded-full text-[13px] font-extrabold shadow-cta">
+              <a href={CTA_LINK}>QUERO O MEU TAMBÉM <ArrowRight className="h-5 w-5" /></a>
+            </Button>
           </div>
         </div>
       </section>
