@@ -102,12 +102,16 @@ const faqs = [
   { q: "Qual o prazo de entrega?", a: "Envio rápido para todo o Brasil com frete grátis. Prazo médio de 3-6 dias." },
 ];
 
-const testimonials = [
+const testimonials: { name: string; city: string; role: string; quote: string; img?: string; video?: string; moto: string }[] = [
   { name: "Carlos M.", city: "São Paulo, SP", role: "Entregador iFood", quote: "Melhor investimento que fiz pra trabalhar. Não perco mais corrida e faço mais entregas no dia. A tela é nítida até no sol forte.", img: depoimento1, moto: "Yamaha Fazer 250" },
-  { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160" },
-  { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300" },
+  { name: "Marcos A.", city: "Guarulhos, SP", role: "Motoboy Rappi", quote: "Antes eu parava no semáforo pra ver o celular. Agora aceito corrida sem tirar a mão do guidão. Mudou minha rotina.", video: "/videos/depoimento-video-1.mp4", moto: "Honda CG 160 Fan" },
+  { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160 Titan" },
+  { name: "Felipe T.", city: "Campinas, SP", role: "Entregador iFood", quote: "Já quebrei 3 celulares no suporte. Com o MotoPlay, meu celular fica no bolso o dia todo. Sem estresse.", video: "/videos/depoimento-video-2.mp4", moto: "Yamaha Factor 150" },
+  { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300F" },
+  { name: "Bruno L.", city: "Brasília, DF", role: "Motoboy 99", quote: "Trabalho de madrugada e a tela ilumina certinho. GPS funcionando, música tocando, corrida aceitando. Perfeito.", video: "/videos/depoimento-video-3.mp4", moto: "Honda CG 150 Titan" },
   { name: "Lucas F.", city: "Curitiba, PR", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim.", img: depoimento5, moto: "BMW G 310 GS" },
-  { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda CG 150 Titan" },
+  { name: "Gustavo R.", city: "Salvador, BA", role: "Entregador Uber Eats", quote: "Chove quase todo dia aqui e o MotoPlay aguenta tudo. Tela funcionando normal na chuva. Celular zerado no bolso.", video: "/videos/depoimento-video-4.mp4", moto: "Kawasaki Ninja 300" },
+  { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda NXR 160 Bros" },
   { name: "Thiago P.", city: "Goiânia, GO", role: "Motoboy iFood", quote: "A tela de configuração é completa. Ajustei brilho, idioma, tudo. Qualidade surpreendente pelo preço.", img: depoimento2, moto: "Yamaha Factor 150" },
 ];
 
@@ -577,17 +581,28 @@ const Index = () => {
 
           {/* Testimonial cards */}
           <div className="mt-6 space-y-4">
-            {testimonials.map((t, idx) => (
+            {testimonials.map((t) => (
               <div key={t.name} className="rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
-                {/* Real product photo */}
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={t.img} 
-                    alt={`MotoPlay Pro instalado na moto de ${t.name}`} 
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8">
+                {/* Media — photo or video */}
+                <div className="relative overflow-hidden">
+                  {t.video ? (
+                    <video
+                      className="w-full aspect-[9/16] max-h-[420px] object-cover bg-black"
+                      controls
+                      playsInline
+                      preload="metadata"
+                    >
+                      <source src={t.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img 
+                      src={t.img} 
+                      alt={`MotoPlay Pro instalado na moto de ${t.name}`} 
+                      className="w-full aspect-[4/3] object-cover"
+                      loading="lazy"
+                    />
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8 pointer-events-none">
                     <span className="inline-flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-bold text-primary-foreground">
                       <Check className="h-3 w-3" /> Compra verificada
                     </span>
@@ -614,42 +629,6 @@ const Index = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Video testimonials */}
-          <div className="mt-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary text-center mb-1">Depoimentos em Vídeo</p>
-            <p className="text-center text-[14px] font-bold mb-4">Veja clientes reais usando o MotoPlay Pro</p>
-            <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
-              {[
-                { src: "/videos/depoimento-video-1.mp4", name: "Marcos A.", city: "São Paulo, SP" },
-                { src: "/videos/depoimento-video-2.mp4", name: "Felipe T.", city: "Campinas, SP" },
-                { src: "/videos/depoimento-video-3.mp4", name: "Bruno L.", city: "Rio de Janeiro, RJ" },
-                { src: "/videos/depoimento-video-4.mp4", name: "Gustavo R.", city: "Belo Horizonte, MG" },
-              ].map((v) => (
-                <div key={v.name} className="shrink-0 w-[240px] snap-center rounded-2xl border border-border/80 bg-card shadow-md overflow-hidden">
-                  <div className="relative">
-                    <video
-                      className="w-full aspect-[9/16] max-h-[360px] object-cover bg-black"
-                      controls
-                      playsInline
-                      preload="metadata"
-                    >
-                      <source src={v.src} type="video/mp4" />
-                    </video>
-                  </div>
-                  <div className="p-3 flex items-center gap-2">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-[12px] font-extrabold">
-                      {v.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-[12px] font-bold">{v.name}</p>
-                      <p className="text-[10px] text-muted-foreground">{v.city}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Bottom CTA */}
