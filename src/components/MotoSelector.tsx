@@ -463,8 +463,8 @@ export default function MotoSelector() {
                 </div>
 
                 {/* Moto badge */}
-                <div className="rounded-xl bg-accent/10 p-3 text-center">
-                  <p className="text-[12px] font-bold text-accent-foreground">
+                <div className="rounded-xl bg-[#22C55E]/10 p-3 text-center">
+                  <p className="text-[12px] font-bold text-[#22C55E]">
                     ✅ Pronto para sua {selectedBrand} {selectedModel}
                   </p>
                 </div>
