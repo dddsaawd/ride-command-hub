@@ -60,6 +60,10 @@ import depoimento3 from "@/assets/depoimento-3.webp";
 import depoimento4 from "@/assets/depoimento-4.webp";
 import depoimento5 from "@/assets/depoimento-5.webp";
 import depoimento6 from "@/assets/depoimento-6.webp";
+import depoimento7 from "@/assets/depoimento-7.webp";
+import depoimento8 from "@/assets/depoimento-8.webp";
+import depoimento9 from "@/assets/depoimento-9.webp";
+import depoimento10 from "@/assets/depoimento-10.webp";
 
 import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
 import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
