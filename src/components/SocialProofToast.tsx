@@ -1,30 +1,40 @@
 import { useEffect, useRef, useState } from "react";
-import avatar1 from "@/assets/avatar-1.png";
-import avatar2 from "@/assets/avatar-2.png";
-import avatar3 from "@/assets/avatar-3.png";
-import avatar4 from "@/assets/avatar-4.png";
-import avatar5 from "@/assets/avatar-5.png";
-import avatar6 from "@/assets/avatar-6.png";
+import avatar1 from "@/assets/avatar-1.webp";
+import avatar2 from "@/assets/avatar-2.jpg";
+import avatar3 from "@/assets/avatar-3.jpg";
+import avatar4 from "@/assets/avatar-4.jpg";
+import avatar5 from "@/assets/avatar-5.jpg";
+import avatar6 from "@/assets/avatar-6-old.png";
+import avatar7 from "@/assets/avatar-7.png";
+import avatar8 from "@/assets/avatar-8.png";
+import avatar9 from "@/assets/avatar-9.png";
+import avatar10 from "@/assets/avatar-10.png";
+import avatar11 from "@/assets/avatar-11.png";
+import avatar12 from "@/assets/avatar-12.png";
 
 const buyers = [
   { name: "João", city: "São Paulo", avatar: avatar1 },
   { name: "Carlos", city: "Rio de Janeiro", avatar: avatar4 },
   { name: "Marcos", city: "Belo Horizonte", avatar: avatar5 },
-  { name: "Lucas", city: "Curitiba", avatar: avatar6 },
-  { name: "Pedro", city: "Goiânia", avatar: avatar1 },
-  { name: "Rafael", city: "Salvador", avatar: avatar4 },
-  { name: "André", city: "Fortaleza", avatar: avatar5 },
-  { name: "Thiago", city: "Recife", avatar: avatar6 },
-  { name: "Felipe", city: "Brasília", avatar: avatar1 },
+  { name: "Lucas", city: "Curitiba", avatar: avatar7 },
+  { name: "Pedro", city: "Goiânia", avatar: avatar8 },
+  { name: "Rafael", city: "Salvador", avatar: avatar9 },
+  { name: "André", city: "Fortaleza", avatar: avatar10 },
+  { name: "Thiago", city: "Recife", avatar: avatar11 },
+  { name: "Felipe", city: "Brasília", avatar: avatar12 },
   { name: "Diego", city: "Porto Alegre", avatar: avatar4 },
   { name: "Amanda", city: "Manaus", avatar: avatar3 },
   { name: "Rodrigo", city: "Belém", avatar: avatar5 },
   { name: "Leandro", city: "Campinas", avatar: avatar6 },
   { name: "Juliana", city: "São Luís", avatar: avatar2 },
-  { name: "Matheus", city: "Cuiabá", avatar: avatar4 },
+  { name: "Matheus", city: "Cuiabá", avatar: avatar7 },
   { name: "Camila", city: "Vitória", avatar: avatar3 },
-  { name: "Daniel", city: "Florianópolis", avatar: avatar5 },
+  { name: "Daniel", city: "Florianópolis", avatar: avatar8 },
   { name: "Fernanda", city: "Natal", avatar: avatar2 },
+  { name: "Bruno", city: "Aracaju", avatar: avatar9 },
+  { name: "Gustavo", city: "Teresina", avatar: avatar10 },
+  { name: "Renata", city: "Maceió", avatar: avatar11 },
+  { name: "Vinícius", city: "João Pessoa", avatar: avatar12 },
 ];
 
 const timeLabels = ["Há instantes", "Há 1 min", "Há 2 min", "Há 3 min", "Há 5 min"];
