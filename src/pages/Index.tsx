@@ -60,6 +60,10 @@ import depoimento3 from "@/assets/depoimento-3.webp";
 import depoimento4 from "@/assets/depoimento-4.webp";
 import depoimento5 from "@/assets/depoimento-5.webp";
 import depoimento6 from "@/assets/depoimento-6.webp";
+import depoimento7 from "@/assets/depoimento-7.webp";
+import depoimento8 from "@/assets/depoimento-8.webp";
+import depoimento9 from "@/assets/depoimento-9.webp";
+import depoimento10 from "@/assets/depoimento-10.webp";
 
 import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
 import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
@@ -107,12 +111,21 @@ const testimonials: { name: string; city: string; role: string; quote: string; i
   { name: "Marcos A.", city: "Guarulhos, SP", role: "Motoboy Rappi", quote: "Antes eu parava no semáforo pra ver o celular. Agora aceito corrida sem tirar a mão do guidão. Mudou minha rotina.", video: "/videos/depoimento-video-1.mp4", moto: "Honda CG 160 Fan" },
   { name: "Rafael S.", city: "Rio de Janeiro, RJ", role: "Motoboy Uber", quote: "Instalei em 10 minutos. Liga junto com a moto. Funciona perfeito com iFood e Uber. Outro nível.", img: depoimento3, moto: "Honda CG 160 Titan" },
   { name: "Felipe T.", city: "Campinas, SP", role: "Entregador iFood", quote: "Já quebrei 3 celulares no suporte. Com o MotoPlay, meu celular fica no bolso o dia todo. Sem estresse.", video: "/videos/depoimento-video-2.mp4", moto: "Yamaha Factor 150" },
+  { name: "Leandro V.", city: "Manaus, AM", role: "Motoboy Uber Eats", quote: "GPS de noite fica perfeito. Tela brilha na medida certa, não ofusca. Trabalho até tarde e nunca me perco.", img: depoimento9, moto: "Yamaha Crosser 150" },
   { name: "Amanda L.", city: "Belo Horizonte, MG", role: "Esposa de entregador", quote: "Meu marido parou de usar o celular no suporte. Mais seguro, mais prático. A gente sente a diferença.", img: depoimento4, moto: "Honda CB 300F" },
   { name: "Bruno L.", city: "Brasília, DF", role: "Motoboy 99", quote: "Trabalho de madrugada e a tela ilumina certinho. GPS funcionando, música tocando, corrida aceitando. Perfeito.", video: "/videos/depoimento-video-3.mp4", moto: "Honda CG 150 Titan" },
+  { name: "Rodrigo N.", city: "Recife, PE", role: "Entregador iFood", quote: "Comprei sem acreditar muito, mas quando liguei a moto e a tela acendeu sozinha... rapaz, outro mundo.", video: "/videos/depoimento-video-5.mp4", moto: "Honda Pop 110i" },
   { name: "Lucas F.", city: "Curitiba, PR", role: "Motociclista urbano", quote: "Achei que não ia funcionar na minha moto, mas encaixou perfeitamente. Parece que saiu de fábrica assim.", img: depoimento5, moto: "BMW G 310 GS" },
+  { name: "Henrique C.", city: "Porto Alegre, RS", role: "Motociclista aventureiro", quote: "Uso na estrada, viagem longa. CarPlay com Waze funcionando sem fio. Moto ficou premium demais.", img: depoimento8, moto: "Honda NC 750X" },
   { name: "Gustavo R.", city: "Salvador, BA", role: "Entregador Uber Eats", quote: "Chove quase todo dia aqui e o MotoPlay aguenta tudo. Tela funcionando normal na chuva. Celular zerado no bolso.", video: "/videos/depoimento-video-4.mp4", moto: "Kawasaki Ninja 300" },
+  { name: "Jonatan M.", city: "Ribeirão Preto, SP", role: "Motoboy Rappi", quote: "Minha moto virou outra com o MotoPlay. GPS, música e Spotify tudo na tela. Parece moto de 50 mil.", video: "/videos/depoimento-video-6.mp4", moto: "Honda CB 500F" },
   { name: "Diego R.", city: "Fortaleza, CE", role: "Entregador 99", quote: "Trabalho o dia todo na chuva e no sol. Já perdi 2 celulares. Com o MotoPlay, nunca mais.", img: depoimento6, moto: "Honda NXR 160 Bros" },
+  { name: "Eduardo S.", city: "Goiânia, GO", role: "Entregador iFood", quote: "Fiz a instalação sozinho em 15 minutos. O suporte é firme, não treme. Tela nítida no sol de Goiás.", img: depoimento7, moto: "Suzuki GSX-S750" },
+  { name: "Wagner B.", city: "Florianópolis, SC", role: "Motoboy 99", quote: "De noite a tela fica incrível. Waze aberto, música no fone, aceito corrida na tela. Produtividade dobrou.", video: "/videos/depoimento-video-7.mp4", moto: "Yamaha MT-03" },
+  { name: "Patrick O.", city: "São Luís, MA", role: "Motociclista urbano", quote: "Android Auto sem fio. Não preciso nem tirar o celular do bolso. Liga a moto e tá tudo lá. Incrível.", video: "/videos/depoimento-video-8.mp4", moto: "Honda XRE 300" },
   { name: "Thiago P.", city: "Goiânia, GO", role: "Motoboy iFood", quote: "A tela de configuração é completa. Ajustei brilho, idioma, tudo. Qualidade surpreendente pelo preço.", img: depoimento2, moto: "Yamaha Factor 150" },
+  { name: "Vinícius K.", city: "Joinville, SC", role: "Entregador Uber", quote: "Moto com painel inteligente por menos de 200 reais. Não existe nada parecido no mercado. Recomendo demais.", img: depoimento10, moto: "Kawasaki Z400" },
+  { name: "Anderson F.", city: "Belém, PA", role: "Motoboy iFood", quote: "Calor de 40 graus e chuva forte todo dia. MotoPlay não falhou nenhuma vez. IP67 é real.", video: "/videos/depoimento-video-9.mp4", moto: "Honda CG 160 Start" },
 ];
 
 
