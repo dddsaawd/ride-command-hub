@@ -58,7 +58,7 @@ const SocialProofToast = () => {
 
     const initialDelay = setTimeout(() => {
       show();
-      interval = setInterval(show, 18000 + Math.random() * 12000);
+      interval = setInterval(show, 35000 + Math.random() * 20000);
     }, 8000 + Math.random() * 5000);
 
     return () => {
