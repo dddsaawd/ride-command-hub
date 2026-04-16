@@ -504,7 +504,7 @@ export default function MotoSelector() {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22C55E]"></span>
                         </span>
-                        <p className="text-[12px] text-foreground/80 font-bold">{Math.floor(Math.random() * 8) + 27} pessoas vendo agora</p>
+                        <p className="text-[12px] text-foreground/80 font-bold">{viewersCount.current} pessoas vendo agora</p>
                       </div>
                       <p className="text-[10px] text-destructive/70 font-semibold mt-1">Preço pode subir a qualquer momento</p>
                     </>
