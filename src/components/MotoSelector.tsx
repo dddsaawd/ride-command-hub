@@ -491,7 +491,7 @@ export default function MotoSelector() {
                     { icon: Lock, text: "Compra 100% segura" },
                     { icon: CreditCard, text: "Pix ou cartão" },
                     { icon: Truck, text: "Entrega para todo Brasil" },
-                    { icon: Shield, text: "7 dias de garantia" },
+                    { icon: Shield, text: "90 dias de garantia" },
                   ].map(({ icon: Icon, text }) => (
                     <div key={text} className="flex items-center gap-1.5 text-[10px] font-semibold text-muted-foreground">
                       <Icon className="h-3 w-3 text-primary shrink-0" />{text}
