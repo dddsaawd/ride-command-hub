@@ -54,6 +54,13 @@ import logoYoutube from "@/assets/logo-youtube.png";
 import logoZe from "@/assets/logo-ze.png";
 import logoKeeta from "@/assets/logo-keeta.png";
 
+import depoimento1 from "@/assets/depoimento-1.webp";
+import depoimento2 from "@/assets/depoimento-2.webp";
+import depoimento3 from "@/assets/depoimento-3.webp";
+import depoimento4 from "@/assets/depoimento-4.webp";
+import depoimento5 from "@/assets/depoimento-5.webp";
+import depoimento6 from "@/assets/depoimento-6.webp";
+
 import produtoProvaDagua from "@/assets/produto-prova-dagua.png";
 import produtoAppsEntregas from "@/assets/produto-apps-entregas.png";
 import produtoInstalacao from "@/assets/produto-instalacao.png";
