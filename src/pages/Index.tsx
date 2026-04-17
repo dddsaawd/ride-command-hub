@@ -140,7 +140,17 @@ const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showStickyLogo, setShowStickyLogo] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [offerUnlocked, setOfferUnlocked] = useState(false);
   const heroVslRef = useRef<HTMLVideoElement>(null);
+
+  // Detect when the offer section appears (i.e., user confirmed their bike)
+  useEffect(() => {
+    const check = () => setOfferUnlocked(!!document.getElementById("oferta"));
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
 
   // Autoplay VSL when scrolled into view, pause when out
   useEffect(() => {
@@ -763,8 +773,8 @@ const Index = () => {
           </p>
 
           <Button asChild size="lg" className="h-[52px] w-full rounded-full text-[14px] font-extrabold shadow-cta">
-            <a href="#compatibilidade">
-              VERIFICAR MINHA MOTO <ArrowRight className="h-5 w-5" />
+            <a href={offerUnlocked ? "#oferta" : "#compatibilidade"}>
+              {offerUnlocked ? "COMPRAR AGORA" : "VERIFICAR MINHA MOTO"} <ArrowRight className="h-5 w-5" />
             </a>
           </Button>
 
@@ -779,7 +789,9 @@ const Index = () => {
       {/* ═══════ STICKY CTA MOBILE ═══════ */}
       <div className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-t from-background via-background/95 to-transparent px-4 pb-3 pt-5 md:hidden">
         <Button asChild size="lg" className="h-[50px] w-full rounded-full text-[13px] font-extrabold shadow-cta">
-          <a href="#compatibilidade">VERIFICAR MINHA MOTO <ArrowRight className="h-5 w-5" /></a>
+          <a href={offerUnlocked ? "#oferta" : "#compatibilidade"}>
+            {offerUnlocked ? "COMPRAR AGORA" : "VERIFICAR MINHA MOTO"} <ArrowRight className="h-5 w-5" />
+          </a>
         </Button>
       </div>
     </main>
