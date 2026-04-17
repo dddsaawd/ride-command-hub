@@ -193,14 +193,18 @@ const TOP_BRANDS = ["Honda", "Yamaha", "BMW Motorrad", "Kawasaki", "Harley-David
 const OTHER_BRANDS = Object.keys(MOTO_DATABASE).filter(b => !TOP_BRANDS.includes(b)).sort();
 const BRAND_LIST = [...TOP_BRANDS, ...OTHER_BRANDS];
 
-/* Countdown timer hook */
-const useCountdown = (minutes: number) => {
-  const end = useRef(Date.now() + minutes * 60_000);
+/* Countdown timer hook — only starts when `start` is true */
+const useCountdown = (minutes: number, start: boolean) => {
+  const end = useRef<number | null>(null);
   const [left, setLeft] = useState(minutes * 60);
   const [expired, setExpired] = useState(false);
   useEffect(() => {
+    if (!start) return;
+    if (end.current === null) {
+      end.current = Date.now() + minutes * 60_000;
+    }
     const t = setInterval(() => {
-      const diff = Math.max(0, Math.floor((end.current - Date.now()) / 1000));
+      const diff = Math.max(0, Math.floor(((end.current as number) - Date.now()) / 1000));
       setLeft(diff);
       if (diff <= 0) {
         setExpired(true);
@@ -208,7 +212,7 @@ const useCountdown = (minutes: number) => {
       }
     }, 1000);
     return () => clearInterval(t);
-  }, [minutes]);
+  }, [minutes, start]);
   const m = String(Math.floor(left / 60)).padStart(2, "0");
   const s = String(left % 60).padStart(2, "0");
   return { display: `${m}:${s}`, expired };
@@ -222,7 +226,7 @@ export default function MotoSelector() {
   const [showBrands, setShowBrands] = useState(false);
   const offerRef = useRef<HTMLDivElement>(null);
   const viewersCount = useRef(Math.floor(Math.random() * 8) + 27);
-  const { display: countdown, expired: offerExpired } = useCountdown(15);
+  const { display: countdown, expired: offerExpired } = useCountdown(15, confirmed);
 
   const totalModels = useMemo(() => Object.values(MOTO_DATABASE).reduce((s, m) => s + m.length, 0), []);
 
