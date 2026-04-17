@@ -226,7 +226,7 @@ export default function MotoSelector() {
   const [showBrands, setShowBrands] = useState(false);
   const offerRef = useRef<HTMLDivElement>(null);
   const viewersCount = useRef(Math.floor(Math.random() * 8) + 27);
-  const { display: countdown, expired: offerExpired } = useCountdown(15);
+  const { display: countdown, expired: offerExpired } = useCountdown(15, confirmed);
 
   const totalModels = useMemo(() => Object.values(MOTO_DATABASE).reduce((s, m) => s + m.length, 0), []);
 
