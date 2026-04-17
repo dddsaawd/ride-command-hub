@@ -140,7 +140,17 @@ const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showStickyLogo, setShowStickyLogo] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [offerUnlocked, setOfferUnlocked] = useState(false);
   const heroVslRef = useRef<HTMLVideoElement>(null);
+
+  // Detect when the offer section appears (i.e., user confirmed their bike)
+  useEffect(() => {
+    const check = () => setOfferUnlocked(!!document.getElementById("oferta"));
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
 
   // Autoplay VSL when scrolled into view, pause when out
   useEffect(() => {
