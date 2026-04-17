@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import MotoSelector from "@/components/MotoSelector";
 import {
   ArrowRight,
@@ -140,6 +140,25 @@ const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showStickyLogo, setShowStickyLogo] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const heroVslRef = useRef<HTMLVideoElement>(null);
+
+  // Autoplay VSL when scrolled into view, pause when out
+  useEffect(() => {
+    const video = heroVslRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     document.title = "MotoPlay Pro | Painel Inteligente para Moto";
