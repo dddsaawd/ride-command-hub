@@ -265,9 +265,7 @@ export default function MotoSelector() {
     setShowBrands(false);
   };
 
-  const whatsappLink = `https://wa.me/5500000000000?text=${encodeURIComponent(
-    `Quero o MotoPlay Pro com 40% OFF!\nMinha moto: ${selectedBrand || ""} ${selectedModel || ""}`
-  )}`;
+  const checkoutLink = "https://pay.carrinhomotoplay.online/pay/a2c4b103-c350-44a5-9a8a-f77ae63ecf2e";
 
   return (
     <>
@@ -493,7 +491,7 @@ export default function MotoSelector() {
 
                 {/* CTA */}
                 <Button asChild size="lg" className="h-[56px] w-full rounded-full text-[15px] font-extrabold shadow-cta">
-                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <a href={checkoutLink} target="_blank" rel="noopener noreferrer">
                     {offerExpired ? "GARANTIR ANTES DO PRÓXIMO REAJUSTE" : "COMPRAR AGORA COM 40% OFF"} <ArrowRight className="h-5 w-5" />
                   </a>
                 </Button>
