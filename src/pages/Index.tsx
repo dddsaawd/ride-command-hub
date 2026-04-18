@@ -773,7 +773,10 @@ const Index = () => {
           </p>
 
           <Button asChild size="lg" className="h-[52px] w-full rounded-full text-[14px] font-extrabold shadow-cta">
-            <a href={offerUnlocked ? "#oferta" : "#compatibilidade"}>
+            <a
+              href={offerUnlocked ? "https://pay.carrinhomotoplay.online/pay/a2c4b103-c350-44a5-9a8a-f77ae63ecf2e" : "#compatibilidade"}
+              {...(offerUnlocked ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
               {offerUnlocked ? "COMPRAR AGORA" : "VERIFICAR MINHA MOTO"} <ArrowRight className="h-5 w-5" />
             </a>
           </Button>
@@ -789,7 +792,10 @@ const Index = () => {
       {/* ═══════ STICKY CTA MOBILE ═══════ */}
       <div className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-t from-background via-background/95 to-transparent px-4 pb-3 pt-5 md:hidden">
         <Button asChild size="lg" className="h-[50px] w-full rounded-full text-[13px] font-extrabold shadow-cta">
-          <a href={offerUnlocked ? "#oferta" : "#compatibilidade"}>
+          <a
+            href={offerUnlocked ? "https://pay.carrinhomotoplay.online/pay/a2c4b103-c350-44a5-9a8a-f77ae63ecf2e" : "#compatibilidade"}
+            {...(offerUnlocked ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
             {offerUnlocked ? "COMPRAR AGORA" : "VERIFICAR MINHA MOTO"} <ArrowRight className="h-5 w-5" />
           </a>
         </Button>
