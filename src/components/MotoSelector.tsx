@@ -418,18 +418,11 @@ export default function MotoSelector() {
               Compatibilidade confirmada. Aproveite o desconto exclusivo.
             </p>
 
-            {/* Product images */}
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              <div className="overflow-hidden rounded-2xl border border-surface-foreground/10">
-                <img src={produtoCarplayAndroid} alt="MotoPlay Pro com CarPlay" className="w-full h-full object-cover" loading="lazy" />
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-surface-foreground/10">
-                <img src={produtoSuporteMaleavel} alt="Suporte maleável universal" className="w-full h-full object-cover" loading="lazy" />
-              </div>
-            </div>
-            <div className="mt-3 overflow-hidden rounded-2xl border border-surface-foreground/10">
+            {/* Product image — compacta */}
+            <div className="mt-5 mx-auto max-w-[200px] overflow-hidden rounded-2xl border border-surface-foreground/10">
               <img src={produtoKitCompleto} alt="Kit completo MotoPlay Pro" className="w-full object-cover" loading="lazy" />
             </div>
+
 
             {/* Pricing card */}
             <div className="mt-5 rounded-2xl border-2 border-primary bg-card overflow-hidden shadow-xl">
