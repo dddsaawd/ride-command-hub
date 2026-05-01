@@ -533,10 +533,6 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Prova d'água */}
-          <div className="mt-5 overflow-hidden rounded-2xl border border-surface-foreground/10">
-            <img src={produtoProvaDagua} alt="MotoPlay Pro à prova d'água IP67" className="w-full object-cover" loading="lazy" />
-          </div>
 
         </div>
       </section>
