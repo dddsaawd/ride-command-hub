@@ -207,7 +207,7 @@ const Index = () => {
       <div
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-transparent px-4 py-3 transition-all duration-300 ${showStickyLogo ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
       >
-        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-16 w-auto -ml-4" />
+        <img src={logoMotoplay} alt="MotoPlay Pro" className="h-10 sm:h-12 md:h-14 w-auto object-contain shrink-0" />
         <button onClick={() => setMenuOpen(true)} className="flex flex-col gap-[5px] p-1" aria-label="Abrir menu">
           <span className="block h-[2px] w-6 bg-white rounded-full" />
           <span className="block h-[2px] w-6 bg-white rounded-full" />
@@ -226,7 +226,7 @@ const Index = () => {
         className={`fixed top-0 right-0 z-[70] h-full w-[280px] bg-white shadow-2xl transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-          <img src={logoDark} alt="MotoPlay Pro" className="h-7 w-auto -ml-1" />
+          <img src={logoDark} alt="MotoPlay Pro" className="h-9 sm:h-10 w-auto object-contain shrink-0" />
           <button onClick={() => setMenuOpen(false)} className="p-1" aria-label="Fechar menu">
             <X className="h-6 w-6 text-foreground" />
           </button>
