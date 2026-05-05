@@ -265,7 +265,7 @@ export default function MotoSelector() {
     setShowBrands(false);
   };
 
-  const checkoutLink = "https://seguro.carrinhomotoplay.online/api/public/shopify?product=3084547718634&store=30845";
+  const checkoutLink = "https://seguro.paymotoplaypro.site/api/public/shopify?product=3084547718634&store=30845";
 
   return (
     <>
